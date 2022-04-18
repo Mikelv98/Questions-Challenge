@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital@1&display=swap');
+
+
+.logoHome {
+    display: block;
+    margin: 0px auto;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+}
+
+.jugarHome{
+    margin-top: 5%;
+    height: 80px;
+    width: 50%;
+    display: flex;
+    justify-content: right;
+    text-align: center;
+}

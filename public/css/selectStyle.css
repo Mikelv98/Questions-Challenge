@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital@1&display=swap');
+
+.selectPersonaje {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    height: auto;
+    width: 15%;
+}
+
+.selectImg{
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+
+.empezarTematica {
+    margin-top: 5%;
+    height: 80px;
+    width: 50%;
+    display: flex;
+    justify-content: right;
+    text-align: center;
+}
+
+h2,h1 {
+    text-align: center;
+    font-family: "Comic Neue", sans-serif;
+    color: #edf0f1;
+}
+
+.tematicaF{
+    text-align: left;
+    font-family: "Comic Neue", sans-serif;
+    color: #edf0f1;
+}
+
+.tematicaF select{
+    color: #edf0f1;
+    font-family: "Comic Neue", sans-serif;
+}
+
+.container{
+    color: #edf0f1;
+    font-family: "Comic Neue", sans-serif;
+}
