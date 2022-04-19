@@ -1,14 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital@1&display=swap');
 
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    background-color: #24252A;
-}
-
 li, a, button {
     font-family: "Comic Neue", sans-serif;
     font-weight: 400;
