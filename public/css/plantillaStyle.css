@@ -105,3 +105,146 @@ li, a, button {
     color: #edf0f1;
     text-decoration: none;
 }
+
+/*Style Cómo jugar page*/
+
+.container {
+    width: 95%;
+    max-width: 1220px;
+    margin: 0 auto;
+  }
+
+.episode {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    position: relative;
+  }
+  
+  .episode__number {
+    font-family: "Comic Neue", sans-serif;
+    color: #edf0f1;
+    font-size: 5vw;
+    font-weight: 600;
+    padding: 5px 0;
+    position: sticky;
+    top: 0;
+    text-align: center;
+    height: calc(10vw + 20px);
+    transition: all 0.2s ease-in;
+  }
+  
+  .episode__content {    
+    font-family: "Comic Neue", sans-serif;
+    color: #edf0f1;
+    border-top: 2px solid #fff;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 10px;
+    padding: 15px 0;
+  }
+  
+  .episode__content .title {
+    font-weight: 600;
+    font-size: 19px;
+  }
+  
+  .episode__content .story {
+    line-height: 26px;
+    font-size: 17px;
+  }
+  
+  @media (max-width: 600px) {
+    .episode__content {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .episode__content .story {
+      font-size: 15px;
+    }
+  }
+
+  /*Style Preguntas frecuentes page*/
+
+  details {
+    font-family: "Comic Neue", sans-serif;
+    color: #edf0f1;
+    width: 75%;
+    min-height: 5px;
+    max-width: 700px;
+    padding: 45px 70px 45px 45px;
+    margin: 0 auto;
+    position: relative;
+    font-size: 22px;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 15px;
+    box-sizing: border-box;
+    transition: all .3s;
+  }
+  
+  details + details {
+    margin-top: 20px;
+  }
+  
+  details[open] {
+    color: #edf0f1;
+    min-height: 50px;
+    
+    box-shadow: 2px 2px 20px rgba(0,0,0,.2);
+  }
+  
+  details p {
+    border-top: 2px solid rgba(0,136,169,1);
+    padding: 15px 0;
+    color: #edf0f1;
+    font-weight: 300;
+  }
+  
+  summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  summary:focus {
+    outline: none;
+    
+  }
+  
+  summary:focus::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 0 5px rgba(0,136,169,1);
+  }
+  
+  summary::-webkit-details-marker {
+    display: none
+  }
+  
+  .control-icon {
+    fill: rebeccapurple;
+    transition: .3s ease;
+    pointer-events: none;
+  }
+  
+  .control-icon-close {
+    display: none;
+  }
+  
+  details[open] .control-icon-close {
+    display: initial;
+    transition: .3s ease;
+  }
+  
+  details[open] .control-icon-expand {
+    display: none;
+  }
+  

@@ -19,6 +19,9 @@ use App\Http\Controllers\SelectController;
 
 Route::get('/', HomeController::class);
 
+Route::view('/ComoJugar', 'comojugar');
+Route::view('/Preguntas', 'preguntas');
+
 Route::get('/Select', SelectController::class);
 
 

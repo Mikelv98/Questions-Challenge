@@ -20,8 +20,8 @@
             <nav>
                 <ul id="nav_links">
                     <li><a href="#" >Categorias</a></li>
-                    <li><a href="#" >Como Jugar</a></li>
-                    <li><a href="#" >Preguntas Frecuentes</a></li>
+                    <li><a href="ComoJugar" >Como Jugar</a></li>
+                    <li><a href="Preguntas" >Preguntas Frecuentes</a></li>
                 </ul>
             </nav>
             <a id="admin" href="#" name ="adminHome"><button>Admin</button></a>
