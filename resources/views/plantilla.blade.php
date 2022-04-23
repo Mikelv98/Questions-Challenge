@@ -14,7 +14,7 @@
     <body>
         <header id="navBar">
             <figure>
-                <img id="logo" src="images\questionChallenge3.png" alt="Foto de logo" />
+                <a href="{{ url('/') }}"><img id="logo" src="images\questionChallenge3.png" alt="Foto de logo" /></a>
             </figure>
             
             <nav>
