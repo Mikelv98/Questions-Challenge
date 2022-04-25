@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class avatare extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'idAvatar'; // Clave primaria
 }

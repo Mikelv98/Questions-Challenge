@@ -28,12 +28,16 @@
 
             <h3>Escoja un personaje</h3>
             <figure id="selectImg">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 1">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 2">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 3">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 4">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 5">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 6">
+                @foreach ($avatar as $avatares)
+                    {{--<img class="selectPersonaje" src="data:image/png;base64,{{$avatares->Foto}}" alt="Personaje{{$avatares->idAvatar}}">--}}
+
+                @endforeach
+                <img class="selectPersonaje" src="images/avatares/harryPotter.png" alt="Personaje{{$avatares->idAvatar}}">
+                <img class="selectPersonaje" src="images/avatares/kemonito.png" alt="Personaje{{$avatares->idAvatar}}">
+                <img class="selectPersonaje" src="images/avatares/perro.png" alt="Personaje{{$avatares->idAvatar}}">
+                <img class="selectPersonaje" src="images/avatares/pikachu.png" alt="Personaje{{$avatares->idAvatar}}">
+                <img class="selectPersonaje" src="images/avatares/robot.png" alt="Personaje{{$avatares->idAvatar}}">
+                <img class="selectPersonaje" src="images/avatares/tabla.png" alt="Personaje{{$avatares->idAvatar}}">
             </figure>
 
             <hr>
