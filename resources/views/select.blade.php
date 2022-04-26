@@ -14,9 +14,12 @@
             <hr>
             <h3>Seleccione una tematica</h3>
             <select id="Tematica">
-                <option value="uno">Tematica 1</option>
+                <!-- <option value="uno">Tematica 1</option>
                 <option value="dos">Tematica 2</option>
-                <option value="tres">Tematica 3</option>
+                <option value="tres">Tematica 3</option> -->
+                @foreach($tematica as $tematicas)
+                <option value="">{{$tematicas->Nombre}}</option>
+                @endforeach
             </select>
 
             <h3>Seleccione el numero de jugadores</h3>
@@ -28,16 +31,13 @@
 
             <h3>Escoja un personaje</h3>
             <figure id="selectImg">
-                @foreach ($avatar as $avatares)
-                    {{--<img class="selectPersonaje" src="data:image/png;base64,{{$avatares->Foto}}" alt="Personaje{{$avatares->idAvatar}}">--}}
-
-                @endforeach
-                <img class="selectPersonaje" src="images/avatares/harryPotter.png" alt="Personaje{{$avatares->idAvatar}}">
-                <img class="selectPersonaje" src="images/avatares/kemonito.png" alt="Personaje{{$avatares->idAvatar}}">
-                <img class="selectPersonaje" src="images/avatares/perro.png" alt="Personaje{{$avatares->idAvatar}}">
-                <img class="selectPersonaje" src="images/avatares/pikachu.png" alt="Personaje{{$avatares->idAvatar}}">
-                <img class="selectPersonaje" src="images/avatares/robot.png" alt="Personaje{{$avatares->idAvatar}}">
-                <img class="selectPersonaje" src="images/avatares/tabla.png" alt="Personaje{{$avatares->idAvatar}}">
+                
+                <img class="selectPersonaje" src="images/avatares/harryPotter.png" alt="">
+                <img class="selectPersonaje" src="images/avatares/kemonito.png" alt="">
+                <img class="selectPersonaje" src="images/avatares/perro.png" alt="">
+                <img class="selectPersonaje" src="images/avatares/pikachu.png" alt="">
+                <img class="selectPersonaje" src="images/avatares/robot.png" alt="">
+                <img class="selectPersonaje" src="images/avatares/tabla.png" alt="">
             </figure>
 
             <hr>
