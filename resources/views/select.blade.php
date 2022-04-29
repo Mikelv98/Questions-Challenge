@@ -31,22 +31,14 @@
 
             <h3>Escoja un personaje</h3>
             <figure id="selectImg">
-                @foreach ($avatar as $avatares)
 
-                <h2
-                class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">
-                {{ $avatares->foto }}</h2>
-                <img class="h-full w-auto bg-cover mt-2"
+                <img class="selectPersonaje" src="images\avatares\harryPotter.png" alt="harryPotter">
+                <img class="selectPersonaje" src="images\avatares\kemonito.png" alt="kemonito">
+                <img class="selectPersonaje" src="images\avatares\perro.png" alt="perro">
+                <img class="selectPersonaje" src="images\avatares\pikachu.png" alt="pikachu">
+                <img class="selectPersonaje" src="images\avatares\robot.png" alt="robot">
+                <img class="selectPersonaje" src="images\avatares\tabla.png" alt="tabla">
 
-                                                    src="data:image/png;base64,'.base64_encode(stripslashes({{ $avatares->foto }})) .' "
-                                                    alt="{{ $avatares->name }}">
-                @endforeach
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 1">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 2">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 3">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 4">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 5">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 6">
             </figure>
 
             <hr>
