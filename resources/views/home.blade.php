@@ -1,17 +1,23 @@
-@extends('plantilla')
+@extends('layouts.app')
 
-@section('estilos')
-    <link href="{{ url('css\homeStyle.css') }}"   rel="stylesheet">
-    {{--<link href="{{ url('css\selectStyle.css') }}" rel="stylesheet"> --}}
-@endsection
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
-@section('titulo', 'Questions Challenge')
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-@section('contenido')
-    <section>
-        <figure id="logoHome">
-            <img src="images\questionChallenge.png" alt="Foto de logo" />
-        </figure>
-        <a class="jugarHome" href="Select" name ="JugarHome"><button>Jugar</button></a>
-    </section>
+                    {{ __('You are logged in!') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

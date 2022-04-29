@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Tematicas;//del modal
+use App\Models\Avatares;//del modal
+use DB;
+use Auth;
 class SelectController extends Controller
 {
-    public function __invoke(){
-        return view('select');
+    public function index()
+    {
+        $tematicas=Tematicas::orderby('nombre','ASC')->get();
+        $avatar=Avatares::orderby('name','ASC')->get();
+        //dd($avatar);
+        return view('Select', compact('tematicas','avatar'));
     }
+
+
 }

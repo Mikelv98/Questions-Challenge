@@ -18,11 +18,15 @@ use App\Http\Controllers\SelectController;
 */
 
 // Route::get('/', HomeController::class);
-Route::get('/', [HomeController::class, 'create']);
+Route::get('/', function () {
+    return view('welcome');
+})->name('/');
 
 Route::view('/ComoJugar', 'comojugar');
 Route::view('/Preguntas', 'preguntas');
 
-Route::get('/Select', SelectController::class);
+
+Route::get('/Select', [SelectController::class, 'index']);
 
 
+Auth::routes();
