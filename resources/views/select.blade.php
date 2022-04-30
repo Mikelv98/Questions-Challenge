@@ -14,9 +14,12 @@
             <hr>
             <h3>Seleccione una tematica</h3>
             <select id="Tematica">
-                <option value="uno">Tematica 1</option>
+                <!-- <option value="uno">Tematica 1</option>
                 <option value="dos">Tematica 2</option>
-                <option value="tres">Tematica 3</option>
+                <option value="tres">Tematica 3</option> -->
+                @foreach($tematica as $tematicas)
+                <option value="">{{$tematicas->Nombre}}</option>
+                @endforeach
             </select>
 
             <h3>Seleccione el numero de jugadores</h3>
@@ -28,12 +31,13 @@
 
             <h3>Escoja un personaje</h3>
             <figure id="selectImg">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 1">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 2">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 3">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 4">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 5">
-                <img class="selectPersonaje" src="images\questionChallenge3.png" alt="Personaje 6">
+                
+                <img class="selectPersonaje" src="images/avatares/harryPotter.png" alt="">
+                <img class="selectPersonaje" src="images/avatares/kemonito.png" alt="">
+                <img class="selectPersonaje" src="images/avatares/perro.png" alt="">
+                <img class="selectPersonaje" src="images/avatares/pikachu.png" alt="">
+                <img class="selectPersonaje" src="images/avatares/robot.png" alt="">
+                <img class="selectPersonaje" src="images/avatares/tabla.png" alt="">
             </figure>
 
             <hr>
