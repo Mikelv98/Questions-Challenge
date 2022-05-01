@@ -8,13 +8,9 @@ use App\Models\tematica;
 
 class SelectController extends Controller
 {
-    // public function create(){
-    //     $avatar = avatare::all();
-    //     return view('select', compact('avatar'));
-    // }
-
-    public function create2(){
+    public function create(){
         $tematica = tematica::all();
         return view('select', compact('tematica'));
     }
+
 }
