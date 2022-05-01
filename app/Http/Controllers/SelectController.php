@@ -9,13 +9,9 @@ use DB;
 use Auth;
 class SelectController extends Controller
 {
-    public function index()
-    {
-        $tematicas=Tematicas::orderby('nombre','ASC')->get();
-        $avatar=Avatares::orderby('name','ASC')->get();
-        //dd($avatar);
-        return view('Select', compact('tematicas','avatar'));
+    public function create(){
+        $tematica = tematica::all();
+        return view('select', compact('tematica'));
     }
-
 
 }

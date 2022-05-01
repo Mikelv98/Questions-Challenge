@@ -5,18 +5,20 @@ html{
     /* box-sizing: border-box; */
     height: 100%;
     width: 100%;
-    background-color: #24252A;
+    /* background-color: #24252A; */
 }
 
-body{
+body#General{
     margin: 0px;
     padding: 0px;
     height: 100%;
     width: 100%;
+    background-color: #24252A;
+    /* background-color: black; */
     /* display: flex; */
 }
 
-body header#navBar{
+body#General header#navBar{
     margin: 0%;
     height: 70px;
     display: flex;
@@ -106,7 +108,22 @@ li, a, button {
     text-decoration: none;
 }
 
-/*Style Cómo jugar page*/
+body#General div.BotonFin{
+  display: flex;
+  justify-content: end;
+  margin: 0px 10px 10px 0px;
+}
+
+body#General div.BotonFin .izqbtn{
+  margin-right: 5px;
+}
+
+body#General div.BotonFin .derbtn{
+  margin-left: 5px;
+}
+
+
+/*Style Cómo jugar page ---hacer su propio css---*/
 
 .container {
     width: 95%;

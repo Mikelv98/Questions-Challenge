@@ -9,9 +9,10 @@
 
 @section('contenido')
     <section id="Seleccion">
-        <h1>Questions Challenge</h1>
-        <form id="Opciones" method="post">
-            <hr>
+        <h1 class="titulo">Questions Challenge</h1>
+        <form id="Opciones" action="{{route('JuegoData')}}" method="post">
+            @csrf
+            <hr class="dividir" />
             <h3>Seleccione una tematica</h3>
             <select id="Tematica">
                 <option>Tematicas</option>
@@ -41,7 +42,7 @@
 
             </figure>
 
-            <hr>
+            <hr class="dividir"/>
 
             <button type="submit">Empezar</button>
         </form>
