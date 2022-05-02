@@ -18,7 +18,7 @@
                     <label for="exampleFormControlInput1" class="form-label" style="color: whitesmoke">Contraseña</label>
                     <input type="password" class="form-control" name="password" id="password">
                 </div>
-                
+
                 <hr style="background-color: white; width: 100%" />
                 <div class="BotonFin">
                     <button type="button" class="izqbtn btn btn-light" data-bs-dismiss="modal">Cerrar</button>

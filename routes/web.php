@@ -34,7 +34,7 @@ Route::post( '/JuegoData', [JuegoController::class, 'showJuego'] )->name('JuegoD
 Route::get ( '/Juego',     [JuegoController::class, 'create'   ] )->name('Juego');
 /*--------------------------------------------- Juego ---------------------------------------------*/
 
-Route::get('/Select', [SelectController::class, 'create']);
+//Route::get('/Select', [SelectController::class, 'create']);
 
 Route::get('/Select', [SelectController::class, 'index']);
 
