@@ -265,3 +265,53 @@ body#General div.BotonFin .derbtn{
     display: none;
   }
   
+  /*Para seleccionar pensonaje*/
+
+  .personajes{
+    text-align: center;
+    padding: 15px;
+  }
+  .input-hidden {
+    position: absolute;
+    left: -9999px;
+    
+  }
+  
+  input[type=radio]:checked + label>img {
+
+    box-shadow: 0 0 3px 3px rgba(0,136,169,1);
+  }
+
+  input[type=radio] + label>img {
+    border: 1px dashed #444;
+    width: 150px;
+    height: 150px;
+    transition: 500ms all;
+  }
+  
+  input[type=radio]:checked + label>img {
+    transform: 
+      rotateZ(-10deg) 
+      rotateX(10deg);
+  }
+
+  .pselect {
+  font-family: "Comic Neue", sans-serif;
+  color: #edf0f1;
+}
+
+.btnconfirmar{
+  font-family: "Comic Neue", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #edf0f1;
+  text-decoration: none;
+  margin-bottom: 15px;
+  margin-left: 160px;
+  margin-right: 160px;
+  background-color: rgba(0,136,169,1);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
