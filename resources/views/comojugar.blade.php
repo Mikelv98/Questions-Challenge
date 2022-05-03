@@ -9,7 +9,7 @@
 
 @section('contenido')
     <section id="Seleccion">
-        <h1>Cómo Jugar</h1>
+        <h1 class="titulo">Cómo Jugar</h1>
         <div class="container">
             <article class="episode">
                 <div class="episode__number">1</div>

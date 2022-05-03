@@ -9,7 +9,7 @@
 
 @section('contenido')
 <section id="Seleccion">
-    <h1>Preguntas Frecuentes</h1>
+    <h1 class="titulo">Preguntas Frecuentes</h1>
     <div style="visibility: hidden; position: absolute; width: 0px; height: 0px;">
         <svg xmlns="http://www.w3.org/2000/svg">
             <symbol viewBox="0 0 24 24" id="expand-more">
