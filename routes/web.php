@@ -30,8 +30,9 @@ Route::get ( '/Administrador', [AdministradorController::class, 'create'] )->nam
 /*--------------------------------------------- Administrador ---------------------------------------------*/
 
 /*--------------------------------------------- Juego ---------------------------------------------*/
-Route::post( '/JuegoData', [JuegoController::class, 'showJuego'] )->name('JuegoData');
-Route::get ( '/Juego',     [JuegoController::class, 'create'   ] )->name('Juego');
+Route::post( '/JuegoData',         [JuegoController::class, 'showJuego'] )->name('JuegoData');
+Route::get ( '/Juego',             [JuegoController::class, 'create'   ] )->name('Juego');
+Route::post ( '/JuegoPregunta',     [JuegoController::class, 'preguntas'   ] )->name('JuegoPregunta');
 /*--------------------------------------------- Juego ---------------------------------------------*/
 
 Route::get('/Select', [SelectController::class, 'create']);
