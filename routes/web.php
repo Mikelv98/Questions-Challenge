@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JuegoController;
+use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\SelectController;
@@ -35,6 +36,14 @@ Route::get ( '/Juego',             [JuegoController::class, 'create'   ] )->name
 Route::post ( '/JuegoPregunta',     [JuegoController::class, 'preguntas'   ] )->name('JuegoPregunta');
 /*--------------------------------------------- Juego ---------------------------------------------*/
 
-Route::get('/Select', [SelectController::class, 'create']);
+/*--------------------------------------------- Configuracion del Juego---------------------------------------------*/
+Route::get ('/Select',        [SelectController::class, 'create']);
+Route::post('/Select/Config', [SelectController::class, 'store' ])->name('Config');
+/*--------------------------------------------- Configuracion del Juego ---------------------------------------------*/
+
+/*--------------------------------------------- Jugadores ---------------------------------------------*/
+Route::get ('/Jugadores',       [PlayerController::class, 'create'])->name('Jugadores');
+Route::post('/Jugadores/Config', [PlayerController::class, 'store' ])->name('ConfigJugadores');
+/*--------------------------------------------- Jugadores ---------------------------------------------*/
 
 

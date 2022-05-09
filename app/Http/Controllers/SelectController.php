@@ -13,4 +13,12 @@ class SelectController extends Controller
         return view('select', compact('tematica'));
     }
 
+    public function store(Request $request){
+        // return ($request);
+        $Tematica = $request->Tematica;
+        $NumeroJugadores = $request->numJug;
+        return view('PlayersView', compact('Tematica', 'NumeroJugadores'));
+        // return redirect()->route('Admin');
+    }
+
 }

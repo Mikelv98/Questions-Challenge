@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class tematica extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'idTematica';
 }
