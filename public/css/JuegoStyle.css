@@ -1,29 +1,115 @@
-html {
-    width: 100%;
-    height: 100%;
-}
-
-body#Juego {
-    background-image: url("../images/Pantallas/Pantalla1.jpg");
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 80% 20%;
-    grid-gap: 5px;
-}
-
-body#Juego figure#Tablero {
-    grid-column: 6/13;
-    grid-row: 1/2;
-    margin: 0px;
-    display: grid;
-    grid-template-columns: repeat(60, 1fr);
-    grid-template-rows: repeat(60, 1fr);
-}
-
-body#Juego figure#Tablero img {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-}
+                @import url('https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap');
+                @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital@1&display=swap');
+                html {
+                    width: 100%;
+                    height: 100%;
+                }
+                
+                body#Juego {
+                    background-image: url("../images/Pantallas/Pantalla1.jpg");
+                    width: 100%;
+                    height: 100%;
+                    display: grid;
+                    grid-template-columns: repeat(12, 1fr);
+                    grid-template-rows: 80% 20%;
+                    grid-gap: 5px;
+                    font-family: "Comic Neue", sans-serif;
+                    margin: 0%;
+                }
+                
+                body#Juego figure#Tablero img {
+                    grid-column: 1/61;
+                    grid-row: 1/61;
+                    width: 100%;
+                    height: 100%;
+                    margin: 0px;
+                }
+                
+                body#Juego figure#Tablero {
+                    grid-column: 6/13;
+                    grid-row: 1/2;
+                    margin: 0px;
+                    display: grid;
+                    grid-template-columns: repeat(60, 1fr);
+                    grid-template-rows: repeat(60, 1fr);
+                }
+                
+                body#Juego figure#Tablero img {
+                    grid-column: 2/5;
+                    grid-row: 1/2;
+                    /* width: 100%;
+    height: 100%; */
+                    margin: 100px 0px 100px 0px;
+                    display: flex;
+                    flex-direction: column;
+                }
+                
+                body#Juego form#Form h4 {
+                    border-radius: 8px;
+                    border: 1px solid black;
+                    min-height: 200px;
+                    text-align: center;
+                    padding: 8px 10px 8px 10px;
+                    background-color: rgb(238, 229, 229);
+                }
+                
+                body#Juego form#Form input {
+                    border-radius: 8px;
+                    border: 1px solid black;
+                    font-family: "Comic Neue", sans-serif;
+                    text-align: center;
+                }
+                
+                body#Juego form#Form input.respuesta {
+                    margin: 8px 0px 8px 0px;
+                    padding: 5px 10px 5px 10px;
+                    background-color: rgb(238, 229, 229);
+                    color: black;
+                    font-weight: 700;
+                }
+                
+                body#Juego form#Form input.respuesta:active {
+                    border: 1px solid black;
+                    padding: 7px 10px 7px 10px;
+                    margin: 6px 0px 6px 0px;
+                    background-color: aquamarine;
+                }
+                
+                body#Juego form#Form input#enviar {
+                    margin: 8px 0px 8px 0px;
+                    padding: 5px 10px 5px 10px;
+                    background-color: rgb(29, 235, 63);
+                    font-weight: bolder;
+                }
+                
+                body#Juego div#Jugadores {
+                    grid-column: 6/12;
+                    grid-row: 2/3;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    height: 90%;
+                }
+                
+                body#Juego div#Jugadores figure.avatares {
+                    grid-column: 6/12;
+                    grid-row: 2/3;
+                    height: 100%;
+                    margin: 0%;
+                    text-align: center;
+                }
+                
+                body#Juego div#Jugadores figure.avatares img {
+                    width: 70%;
+                    height: 70%;
+                }
+                
+                body#Juego div#Jugadores figure.avatares label {
+                    width: 100%;
+                    height: 100%;
+                    padding: 0px 10px 0px 10px;
+                    border-radius: 5px;
+                    background-color: rgb(255, 255, 255, 0.7);
+                    font-weight: 900;
+                }

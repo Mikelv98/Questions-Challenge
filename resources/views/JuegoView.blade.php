@@ -9,14 +9,49 @@
     <title>Question Challenge</title>
 </head>
 <body id="Juego">
-        <div>
-            <div class='flex flex-col relative max-w-sm w-full rounded-lg overflow-hidden mx-auto'>
-                <textarea rows="3" class = 'border-gray-200 focus:border-teal-100 focus:ring focus:ring-yellow-300 focus:ring-opacity-50 rounded-md shadow-sm'></textarea>
-            </div>
+        {{-- <h1>Game</h1> --}}
+        <form id="Form" action="{{route('JuegoPregunta')}}" method="post">
+            @csrf
+            <h4>{{$preguntas[1]->Descripcion}}</h4>
+            <input class="respuesta" type="button" value="{{$preguntas[1]->Respuesta1}}">
+            <input class="respuesta" type="button" value="{{$preguntas[1]->Respuesta2}}">
+            <input class="respuesta" type="button" value="{{$preguntas[1]->RespuestaCorrecta}}">
+            <input id="enviar" type="submit" value="Enviar">
+        </form>
+        <figure id="Tablero">
+            <img src="{{ url('images\Pantallas\Pantalla1.png') }}" alt="Tablero">
+        </figure>
+
+        <div id="Jugadores">
+            @php
+                $i=0;
+            @endphp
+            @foreach ($ImgJugadores as $item)
+                <figure class="avatares">
+                    <img src="{{ $item}}" alt="Avatar{{$i+1}}">
+                    <label for="">puntuacion: {{$PuntajeJugadores[$i]}}</label>
+                </figure>
+                @php
+                    $i++;
+                @endphp
+            @endforeach
+
+            {{-- <figure class="avatares">
+                <img src="images/avatares/kemonito.png" alt="Avatar1">
+                <label for="">puntuacion: 100</label>
+            </figure>
+            <figure class="avatares">
+                <img src="images/avatares/robot.png" alt="Avatar1">
+                <label for="">puntuacion: 100</label>
+            </figure> --}}
         </div>
+
+
+        <!-- <div class="flex justify-between m-4">
         <div class="flex flex-col h-full max-w-lg mx-auto bg-gray-800 rounded-lg">
             <img class="rounded-lg rounded-b-none"
             src="{{ url('images\Pantallas\Pantalla1.png') }}" alt="Tablero" loading="lazy" />
         </div>
+    </div> -->
 </body>
 </html>

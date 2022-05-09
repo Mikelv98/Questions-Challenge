@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital@1&display=swap');
+
+section#Jugadores{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section#Jugadores form#Opciones{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+section#Jugadores h1.titulo{
+    font-size: 50px;
+    margin-bottom: 25px;
+}
+
+section#Jugadores h1.titulo, 
+section#Jugadores h3{
+    text-align: center;
+    font-family: "Comic Neue", sans-serif;
+    color: #edf0f1;
+} 
+
+section#Jugadores form#Opciones hr.dividir{
+    border: 2px solid #ffffff;
+    background-color: white;
+    color: white;
+    margin: 15px 0px 15px 0px;
+}
+
+section#Jugadores form#Opciones figure#selectImg{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+section#Jugadores form#Opciones figure#selectImg img.selectPersonaje{
+    width: 100px;
+    height: 100px;
+}
+
+section#Jugadores form#Opciones input.Text{
+    width: 50%;
+    min-width: 500px;
+    align-self: center;
+    border-radius: 50px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+
+section#Jugadores form#Opciones button.image {
+    border-radius: 20px;
+    border: 2px solid black;
+    background-color: #edf0f1;
+    margin: 0px 10px 0px 10px;
+}
+
+section#Jugadores form#Opciones button.image:active {
+    border-bottom: 4px solid black;
+    background-color: green;
+}
+
+
+section#Jugadores  form#Opciones button#btnEmpezar{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 40px;
+    background-color: rgba(0,136,169,1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+section#Jugadores  form#Opciones div.switch-field1,
+section#Jugadores  form#Opciones div.switch-field2,
+section#Jugadores  form#Opciones div.switch-field3 {
+	display: flex;
+	margin-bottom: 36px;
+	overflow: hidden;
+    width: 100%;
+    /* height: 200px; */
+    justify-content: center;
+}
+
+section#Jugadores form#Opciones div.switch-field1 img.selectPersonajes,
+section#Jugadores form#Opciones div.switch-field2 img.selectPersonajes,
+section#Jugadores form#Opciones div.switch-field3 img.selectPersonajes{
+    width: 100px;
+    height: 100px;
+    border: none;
+}
+
+section#Jugadores  form#Opciones div.switch-field1 input,
+section#Jugadores  form#Opciones div.switch-field2 input,
+section#Jugadores  form#Opciones div.switch-field3 input {
+	position: absolute !important;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	width: 1px;
+	border: 0;
+	overflow: hidden;
+}
+
+section#Jugadores  form#Opciones div.switch-field1 label,
+section#Jugadores  form#Opciones div.switch-field2 label,
+section#Jugadores  form#Opciones div.switch-field3 label {
+	background-color: #e4e4e4;
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 14px;
+	line-height: 1;
+	text-align: center;
+	padding: 8px 16px;
+	margin-right: -1px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+	transition: all 0.1s ease-in-out;
+}
+
+section#Jugadores  form#Opciones div.switch-field1 label:hover,
+section#Jugadores  form#Opciones div.switch-field2 label:hover,
+section#Jugadores  form#Opciones div.switch-field3 label:hover {
+	cursor: pointer;
+}
+
+section#Jugadores  form#Opciones div.switch-field1 input:checked + label,
+section#Jugadores  form#Opciones div.switch-field2 input:checked + label,
+section#Jugadores  form#Opciones div.switch-field3 input:checked + label {
+	background-color: #a5dc86;
+	box-shadow: none;
+}
+
+section#Jugadores  form#Opciones div.switch-field1 label:first-of-type,
+section#Jugadores  form#Opciones div.switch-field2 label:first-of-type,
+section#Jugadores  form#Opciones div.switch-field3 label:first-of-type {
+	border-radius: 4px 0 0 4px;
+}
+
+section#Jugadores  form#Opciones div.switch-field1 label:last-of-type,
+section#Jugadores  form#Opciones div.switch-field2 label:last-of-type,
+section#Jugadores  form#Opciones div.switch-field3 label:last-of-type {
+	border-radius: 0 4px 4px 0;
+}

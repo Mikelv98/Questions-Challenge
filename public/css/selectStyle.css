@@ -36,17 +36,6 @@ section#Seleccion form#Opciones select#cantJug{
     height: 30px;
 }
 
-section#Seleccion form#Opciones figure#selectImg{
-    width: 100%;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-}
-
-section#Seleccion form#Opciones figure#selectImg img.selectPersonaje{
-    width: 100px;
-    height: 100px;
-}
 
 section#Seleccion form#Opciones button{
     margin-top: 15px;

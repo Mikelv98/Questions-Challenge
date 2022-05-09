@@ -19,7 +19,7 @@
     <body id="General">
         <header id="navBar">
             <figure>
-                <a href="{{ url('/') }}"><img id="logo" src="images\questionChallenge3.png" alt="Foto de logo" /></a>
+                <a href="{{ url('/') }}"><img id="logo" src="{{ url('images\questionChallenge3.png')}}" alt="Foto de logo" /></a>
             </figure>
 
             <nav>
@@ -37,6 +37,8 @@
         @include('modals.Admin')
 
         @yield('contenido')
+
+        @yield('script')
 
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
