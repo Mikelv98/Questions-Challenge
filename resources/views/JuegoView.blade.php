@@ -12,10 +12,10 @@
         {{-- <h1>Game</h1> --}}
         <form id="Form" action="{{route('JuegoPregunta')}}" method="post">
             @csrf
-            <h4>Aqui va la pregunta</h4>
-            <input class="respuesta" type="button" value="Respuesta 1">
-            <input class="respuesta" type="button" value="Respuesta 2">
-            <input class="respuesta" type="button" value="Respuesta 3">
+            <h4>{{$preguntas[1]->Descripcion}}</h4>
+            <input class="respuesta" type="button" value="{{$preguntas[1]->Respuesta1}}">
+            <input class="respuesta" type="button" value="{{$preguntas[1]->Respuesta2}}">
+            <input class="respuesta" type="button" value="{{$preguntas[1]->RespuestaCorrecta}}">
             <input id="enviar" type="submit" value="Enviar">
         </form>
         <figure id="Tablero">
@@ -23,18 +23,27 @@
         </figure>
         
         <div id="Jugadores">
-            <figure class="avatares">
-                <img src="images/avatares/harryPotter.png" alt="Avatar1">
-                <label for="">puntuacion: 100</label>
-            </figure>
-            <figure class="avatares">
+            @php
+                $i=0;
+            @endphp
+            @foreach ($ImgJugadores as $item)
+                <figure class="avatares">
+                    <img src="{{ $item}}" alt="Avatar{{$i+1}}">
+                    <label for="">puntuacion: {{$PuntajeJugadores[$i]}}</label>
+                </figure>
+                @php
+                    $i++;
+                @endphp
+            @endforeach
+            
+            {{-- <figure class="avatares">
                 <img src="images/avatares/kemonito.png" alt="Avatar1">
                 <label for="">puntuacion: 100</label>
             </figure>
             <figure class="avatares">
                 <img src="images/avatares/robot.png" alt="Avatar1">
                 <label for="">puntuacion: 100</label>
-            </figure>
+            </figure> --}}
         </div>
         
 

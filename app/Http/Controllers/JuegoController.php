@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 class JuegoController extends Controller
 {
     public function create(){
-        return view('JuegoView');
+        $preguntas = DB::table('preguntas')->get('*')->where('idTematica','=',1);
+        return view('JuegoView', compact('preguntas'));
     }
 
     public function showJuego(Request $request){
@@ -17,27 +18,41 @@ class JuegoController extends Controller
         $Tematica = $request->Tematica;
         $NumJug = $request->NumJugadores;
         $NombreJu1 = $request->Nombrejugador1;
-        $ImagenJu1 = $request->image1;
+        $ImagenJu1 = 'images/avatares/'.$request->image1.'.png';
+        $puntajeJugador1 = 0;
         
         if($request->Nombrejugador2 !== null){
             $NombreJu2 = $request->Nombrejugador2;
-            $ImagenJu2 = $request->image2;
+            $ImagenJu2 = 'images/avatares/'.$request->image2.'.png';
+            $puntajeJugador2 = 0;
+
             if ($request->Nombrejugador3 !== null) {
                 $NombreJu3 = $request->Nombrejugador3;
-                $ImagenJu3 = $request->image3;
-                return view('JuegoView', compact('Tematica','NumJug','NombreJu1','ImagenJu1','NombreJu2','ImagenJu2','NombreJu3','ImagenJu3','preguntas' ));
-                // return redirect()->route('Juego', compact('Tematica','NumJug','NombreJu1','ImagenJu1','NombreJu2','ImagenJu2','NombreJu3','ImagenJu3', ));
-            } else {
-                return view('JuegoView', compact('Tematica','NumJug','NombreJu1','ImagenJu1','NombreJu2','ImagenJu2','preguntas'));
-                // return redirect()->route('Juego', compact('Tematica','NumJug','NombreJu1','ImagenJu1','NombreJu2','ImagenJu2', ));
+                $ImagenJu3 = 'images/avatares/'.$request->image3.'.png';
+                $puntajeJugador3 = 0;
+                $ImgJugadores = [$ImagenJu1,$ImagenJu2,$ImagenJu3];
+                $NameJugadores = [$NombreJu1,$NombreJu2,$NombreJu3];
+                $PuntajeJugadores = [$puntajeJugador1,$puntajeJugador2,$puntajeJugador3];
+                return view('JuegoView', compact('Tematica','NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas'));
+            } 
+            else {
+                $ImgJugadores = [$ImagenJu1,$ImagenJu2];
+                $NameJugadores = [$NombreJu1,$NombreJu2];
+                $PuntajeJugadores = [$puntajeJugador1,$puntajeJugador2];
+                return view('JuegoView', compact('Tematica','NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas'));
             }
         }
-        // return redirect()->route('Juego');
+        else{
+            $ImgJugadores = [$ImagenJu1];
+            $NameJugadores = [$NombreJu1];
+            $PuntajeJugadores = [$puntajeJugador1];
+            return view('JuegoView', compact('Tematica','NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas'));
+        }
     }
 
     public function preguntas(Request $request){
-        $pregunta = pregunta::all();
-        return view('Juego', compact('pregunta'));
+        $preguntas = pregunta::all();
+        return view('JuegoView', compact('preguntas'));
         // return redirect()->route('Juego');
     }
 }
