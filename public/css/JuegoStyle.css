@@ -1,9 +1,9 @@
-html{
+html {
     width: 100%;
     height: 100%;
 }
 
-body#Juego{
+body#Juego {
     background-image: url("../images/Pantallas/Pantalla1.jpg");
     width: 100%;
     height: 100%;
@@ -13,16 +13,16 @@ body#Juego{
     grid-gap: 5px;
 }
 
-body#Juego figure#Tablero{
+body#Juego figure#Tablero {
     grid-column: 6/13;
     grid-row: 1/2;
     margin: 0px;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 80% 20%;
+    grid-template-columns: repeat(60, 1fr);
+    grid-template-rows: repeat(60, 1fr);
 }
 
-body#Juego figure#Tablero img{
+body#Juego figure#Tablero img {
     width: 100%;
     height: 100%;
     margin: 0px;

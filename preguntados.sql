@@ -3,7 +3,7 @@ INSERT INTO `administradores` VALUES
 (1, 1,NULL,NULL);
 
 INSERT INTO `users` VALUES
-(1,'admin','qwe@qwe.qwe',NULL,'1234',NULL,'administrador',NULL,NULL,NULL);
+(1,'admin','qwe@qwe.qwe',NULL,'$2y$10$obbNPqa5JCmkOxHGM/56G.a2MjPa8k0qrH2neuT/jh7WBWwj33fJC',NULL,'administrador',NULL,NULL,NULL);
 
 -- --------------------------------------------------------
 INSERT INTO `avatares` VALUES

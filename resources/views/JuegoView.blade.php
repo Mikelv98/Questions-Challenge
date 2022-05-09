@@ -9,9 +9,14 @@
     <title>Question Challenge</title>
 </head>
 <body id="Juego">
-        <h1>Game</h1>
-        <figure id="Tablero">
-            <img src="{{ url('images\Pantallas\Pantalla1.png') }}" alt="Tablero">
-        </figure>
+        <div>
+            <div class='flex flex-col relative max-w-sm w-full rounded-lg overflow-hidden mx-auto'>
+                <textarea rows="3" class = 'border-gray-200 focus:border-teal-100 focus:ring focus:ring-yellow-300 focus:ring-opacity-50 rounded-md shadow-sm'></textarea>
+            </div>
+        </div>
+        <div class="flex flex-col h-full max-w-lg mx-auto bg-gray-800 rounded-lg">
+            <img class="rounded-lg rounded-b-none"
+            src="{{ url('images\Pantallas\Pantalla1.png') }}" alt="Tablero" loading="lazy" />
+        </div>
 </body>
 </html>
