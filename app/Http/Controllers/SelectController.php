@@ -12,10 +12,10 @@ class SelectController extends Controller
 {
     public function index()
     {
-        $tematicas=Tematicas::orderby('nombre','ASC')->get();
+        $tematica=Tematicas::orderby('nombre','ASC')->get();
         $avatar=Avatares::orderby('name','ASC')->get();
         //dd($avatar);
-        return view('Select', compact('tematicas','avatar'));
+        return view('Select', compact('tematica','avatar'));
     }
 
 

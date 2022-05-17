@@ -28,7 +28,7 @@
             <input type="text" id="descripcion" name="descripcion" required autofocus autocomplete="descripcion" value="{{ $preguntas->descripcion }}">
             <h3>Respuesta correcta</h3>
             <input type="text" id="respuestacorrecta" name="respuestacorrecta" required autofocus
-                autocomplete="respuestacorrecta" value="{{ $preguntas->respuestacorrecta }}">
+                autocomplete="respuestacorrecta" value="{{ $preguntas->respuesta->respuestacorrecta }}">
             <h3>Respuesta incorrecta 1</h3>
             <input type="text" id="respuesta1" name="respuesta1" required autofocus autocomplete="respuesta1" value="{{ $preguntas->respuesta1 }}">
             <h3>Respuesta incorrecta 2</h3>

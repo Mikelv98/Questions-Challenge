@@ -14,7 +14,7 @@ class Preguntas extends Model
      * @var array
      */
     protected $fillable = [
-        'id','descripcion','respuesta1','respuesta2','respuestacorrecta','puntaje','tematica_id'
+        'id','descripcion','respuesta1','respuesta2','puntaje','tematica_id'
 
     ];
     //relacion de uno a muchos -recibe
@@ -22,4 +22,7 @@ class Preguntas extends Model
         return $this->belongsTo('App\Models\Tematicas');
       }
 
+      public function respuesta(){
+        return $this->hasOne('App\Models\Respuestas');
+    }
 }

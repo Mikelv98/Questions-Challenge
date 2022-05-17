@@ -16,7 +16,7 @@
             <h3>Seleccione una tematica</h3>
             <select id="Tematica" name="Tematica">
                 @foreach($tematica as $tematicas)
-                    <option value="{{$tematicas->idTematica}}">{{$tematicas->Nombre}}</option>
+                    <option value="{{$tematicas->id}}">{{$tematicas->nombre}}</option>
                 @endforeach
             </select>
 

@@ -35,7 +35,7 @@
                             <a class="titulo">{{ $pregunta->descripcion }}</a>
                         </td>
                         <td>
-                            <a class="titulo">{{ $pregunta->respuestacorrecta }}</a>
+                            <a class="titulo">{{ $pregunta->respuesta->respuestacorrecta }}</a>
                         </td>
                         <td>
                             <a class="titulo">{{ $pregunta->respuesta1 }}</a>

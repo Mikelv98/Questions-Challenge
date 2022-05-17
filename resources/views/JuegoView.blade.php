@@ -17,16 +17,16 @@
                 $random = rand(1,$contadorP-1);
                 $randomlist = [];
                 array_push($randomlist,$random);
-                print_r($randomlist);
+              //  print_r($randomlist);
             @endphp
-            
 
-            <h1>{{$random}}</h1>
-            <h4>{{$preguntas[$random]->Descripcion}}</h4>
-            <h3>{{$respuestasc[$random]->RespuestaCorrecta}}</h3>
-            <input class="respuesta" type="button" value="{{$preguntas[$random]->Respuesta1}}">
-            <input class="respuesta" type="button" value="{{$preguntas[$random]->Respuesta2}}">
-            <input class="respuesta" type="button" value="{{$respuestasc[$random]->RespuestaCorrecta}}">
+
+            <h1>{{$random+1}}</h1>
+            <h4>{{$preguntas2[$random]->descripcion}}</h4>
+            <h3>{{$preguntas2[$random]->respuestacorrecta}}</h3>
+            <input class="respuesta" type="button" value="{{$preguntas2[$random]->respuesta1}}">
+            <input class="respuesta" type="button" value="{{$preguntas2[$random]->respuesta2}}">
+            <input class="respuesta" type="button" value="{{$preguntas2[$random]->respuestacorrecta}}">
             <input id="enviar" type="submit" value="Enviar">
         </form>
         <figure id="Tablero">

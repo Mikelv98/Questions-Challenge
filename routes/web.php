@@ -36,7 +36,7 @@ Route::post ( '/JuegoPregunta',    [JuegoController::class, 'preguntas'   ] )->n
 /*--------------------------------------------- Juego ---------------------------------------------*/
 
 /*--------------------------------------------- Configuracion del Juego---------------------------------------------*/
-Route::get ('/Select',        [SelectController::class, 'create']);
+Route::get ('/Select',        [SelectController::class, 'index']);
 Route::post('/Select/Config', [SelectController::class, 'store' ])->name('Config');
 /*--------------------------------------------- Configuracion del Juego ---------------------------------------------*/
 

@@ -19,7 +19,6 @@ class CreatePreguntasTable extends Migration
             $table->string('descripcion');
             $table->string('respuesta1');
             $table->string('respuesta2');
-            $table->string('respuestacorrecta');
             $table->string('puntaje')->nullable();
             $table->integer('tematica_id');
             $table->timestamps();
