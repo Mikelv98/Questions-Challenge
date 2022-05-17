@@ -12,10 +12,21 @@
         {{-- <h1>Game</h1> --}}
         <form id="Form" action="{{route('JuegoPregunta')}}" method="post">
             @csrf
-            <h4>{{$preguntas[1]->Descripcion}}</h4>
-            <input class="respuesta" type="button" value="{{$preguntas[1]->Respuesta1}}">
-            <input class="respuesta" type="button" value="{{$preguntas[1]->Respuesta2}}">
-            <input class="respuesta" type="button" value="{{$preguntas[1]->RespuestaCorrecta}}">
+
+            @php
+                $random = rand(1,$contadorP-1);
+                $randomlist = [];
+                array_push($randomlist,$random);
+                print_r($randomlist);
+            @endphp
+            
+
+            <h1>{{$random}}</h1>
+            <h4>{{$preguntas[$random]->Descripcion}}</h4>
+            <h3>{{$respuestasc[$random]->RespuestaCorrecta}}</h3>
+            <input class="respuesta" type="button" value="{{$preguntas[$random]->Respuesta1}}">
+            <input class="respuesta" type="button" value="{{$preguntas[$random]->Respuesta2}}">
+            <input class="respuesta" type="button" value="{{$respuestasc[$random]->RespuestaCorrecta}}">
             <input id="enviar" type="submit" value="Enviar">
         </form>
         <figure id="Tablero">
