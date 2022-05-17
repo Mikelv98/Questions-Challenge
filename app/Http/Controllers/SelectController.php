@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tematicas;//del modal
+use App\Models\tematica;//del modal
 use App\Models\Avatares;//del modal
 use DB;
 use Auth;

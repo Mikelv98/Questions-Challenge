@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital@1&display=swap');
-
-section#Seleccion{
+section#Seleccion {
     margin-top: 100px;
     display: flex;
     flex-direction: column;
@@ -10,14 +9,14 @@ section#Seleccion{
     margin: 0px 30px 0px 30px; */
 }
 
-section#Seleccion form#Opciones{
+section#Seleccion form#Opciones {
     width: 75%;
     display: flex;
     flex-direction: column;
     justify-items: center;
 }
 
-section#Seleccion form#Opciones hr.dividir{
+section#Seleccion form#Opciones hr.dividir {
     /* width: 100%;
     height: 5px; */
     border: 2px solid #ffffff;
@@ -26,58 +25,73 @@ section#Seleccion form#Opciones hr.dividir{
     margin: 15px 0px 15px 0px;
 }
 
-section#Seleccion form#Opciones select#Tematica{
+section#Seleccion a#Opciones hr.dividir {
+    /* width: 100%;
+    height: 5px; */
+    border: 2px solid #ffffff;
+    background-color: white;
+    color: white;
+    margin: 15px 0px 15px 0px;
+}
+
+section#Seleccion form#Opciones select#Tematica {
     margin: 0px 35% 40px 35%;
     height: 30px;
 }
 
-section#Seleccion form#Opciones select#cantJug{
+section#Seleccion form#Opciones select#cantJug {
     margin: 0px 35% 40px 35%;
     height: 30px;
 }
 
-
-section#Seleccion form#Opciones button{
+section#Seleccion form#Opciones button {
     margin-top: 15px;
     margin-bottom: 15px;
     height: 40px;
     /* width: 100px; */
-    background-color: rgba(0,136,169,1);
+    background-color: rgba(0, 136, 169, 1);
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
 
-section#Seleccion form#Opciones button:active{
-    background-color: rgba(0,136,169,0.5);
+section#Seleccion form#Opciones button:active {
+    background-color: rgba(0, 136, 169, 0.5);
     margin: 20px 10% 20px 10%;
     height: 30px;
 }
 
-section#Seleccion h1.titulo{
+section#Seleccion h1.titulo {
     font-size: 50px;
     margin-bottom: 25px;
 }
 
-section#Seleccion h1.titulo, 
-section#Seleccion h3{
+section#Seleccion h1.titulo,
+section#Seleccion h3 {
     text-align: center;
     font-family: "Comic Neue", sans-serif;
     color: #edf0f1;
-} 
+}
 
-section#Seleccion select{
+section#Seleccion a.titulo,
+section#Seleccion p.titulo {
+    text-align: center;
+    font-family: "Comic Neue", sans-serif;
+    color: #edf0f1;
+}
+
+section#Seleccion select {
     font-size: medium;
     border-radius: 40px;
 }
 
-section#Seleccion option{
+section#Seleccion option {
     text-align: center;
     font-family: "Comic Neue", sans-serif;
     font-size: medium;
 }
 
-section#Seleccion hr{
+section#Seleccion hr {
     margin: 0px;
 }

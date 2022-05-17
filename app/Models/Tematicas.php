@@ -14,7 +14,11 @@ class Tematicas extends Model
      * @var array
      */
     protected $fillable = [
-        'id','descripcion','respuesta1','respuesta2','respuestacorrecta','puntaje','tematica_id'
+        'id','nombre','descripcion','tablero',
 
     ];
+    //relacion de 1 a muchos -1client -n compras
+    public function pregunta(){
+        return $this->hasMany('App\Models\Preguntas');
+    }
 }

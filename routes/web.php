@@ -26,14 +26,13 @@ Route::view('/ComoJugar', 'comojugar');
 Route::view('/Preguntas', 'preguntas');
 
 /*--------------------------------------------- Administrador ---------------------------------------------*/
-Route::post( '/Login',         [AdministradorController::class, 'login' ] )->name('Login');
-Route::get ( '/Administrador', [AdministradorController::class, 'create'] )->name('Administrador');
+Route::get('/home', [HomeController::class, 'home']);
 /*--------------------------------------------- Administrador ---------------------------------------------*/
 
 /*--------------------------------------------- Juego ---------------------------------------------*/
 Route::post( '/JuegoData',         [JuegoController::class, 'showJuego'] )->name('JuegoData');
 Route::get ( '/Juego',             [JuegoController::class, 'create'   ] )->name('Juego');
-Route::post ( '/JuegoPregunta',     [JuegoController::class, 'preguntas'   ] )->name('JuegoPregunta');
+Route::post ( '/JuegoPregunta',    [JuegoController::class, 'preguntas'   ] )->name('JuegoPregunta');
 /*--------------------------------------------- Juego ---------------------------------------------*/
 
 /*--------------------------------------------- Configuracion del Juego---------------------------------------------*/
@@ -42,9 +41,26 @@ Route::post('/Select/Config', [SelectController::class, 'store' ])->name('Config
 /*--------------------------------------------- Configuracion del Juego ---------------------------------------------*/
 
 /*--------------------------------------------- Jugadores ---------------------------------------------*/
-Route::get ('/Jugadores',       [PlayerController::class, 'create'])->name('Jugadores');
-Route::post('/Jugadores/Config', [PlayerController::class, 'store' ])->name('ConfigJugadores');
+Route::get ('/Jugadores',           [PlayerController::class, 'create'])->name('Jugadores');
+Route::post('/Jugadores/Config',    [PlayerController::class, 'store' ])->name('ConfigJugadores');
 /*--------------------------------------------- Jugadores ---------------------------------------------*/
+/*--------------------------------------------- Crud admin tematicas ---------------------------------------------*/
+Route::get ('/AdministradorTematicas',         [AdministradorController::class, 'view'])->name('AdministradorTematicas');
+Route::get ('/NuevaTematica',                  [AdministradorController::class, 'createtematica'])->name('NuevaTematica');
+Route::post('creartematica',                   [AdministradorController::class, 'storetematica']);
+Route::get ('/EditarTematica/{id}',            [AdministradorController::class, 'edittematica'])->name('EditarTematica');
+Route::patch('updatetematica/{id}',            [AdministradorController::class, 'updatetematica']);
+Route::get('EliminarTematica/{id}',            [AdministradorController::class, 'destroytematica']);
 
+Route::get ('/AdministradorPreguntas',         [AdministradorController::class, 'viewpreguntas'])->name('AdministradorPreguntas');
+Route::get ('/NuevaPregunta',                  [AdministradorController::class, 'createpregunta'])->name('NuevaPregunta');
+Route::post('crearpregunta',                   [AdministradorController::class, 'storepregunta']);
+Route::get ('/EditarPregunta/{id}',            [AdministradorController::class, 'editpregunta'])->name('EditarPRegunta');
+Route::patch('updatepregunta/{id}',            [AdministradorController::class, 'updatepregunta']);
+Route::get('EliminarPregunta/{id}',            [AdministradorController::class, 'destroypregunta']);
+//Route::get ('/NvaTematica',                  [AdministradorController::class, 'createpregunta'])->name('NuevaPregunta');
+//Route::post('crrtematica',                   [AdministradorController::class, 'storepregunta']);
+
+/*--------------------------------------------- Crud admin tematicas ---------------------------------------------*/
 
 Auth::routes();

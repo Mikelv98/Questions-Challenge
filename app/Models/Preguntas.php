@@ -17,4 +17,9 @@ class Preguntas extends Model
         'id','descripcion','respuesta1','respuesta2','respuestacorrecta','puntaje','tematica_id'
 
     ];
+    //relacion de uno a muchos -recibe
+    public function tematica(){
+        return $this->belongsTo('App\Models\Tematicas');
+      }
+
 }
