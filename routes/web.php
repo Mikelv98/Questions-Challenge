@@ -33,6 +33,7 @@ Route::get('/home', [HomeController::class, 'home']);
 Route::post( '/JuegoData',         [JuegoController::class, 'showJuego'] )->name('JuegoData');
 Route::get ( '/Juego',             [JuegoController::class, 'create'   ] )->name('Juego');
 Route::post ( '/JuegoPregunta',    [JuegoController::class, 'preguntas'   ] )->name('JuegoPregunta');
+Route::post ( '/AbandonarPartida',    [JuegoController::class, 'abandonar'   ] )->name('AbandonarPartida');
 /*--------------------------------------------- Juego ---------------------------------------------*/
 
 /*--------------------------------------------- Configuracion del Juego---------------------------------------------*/
@@ -58,9 +59,11 @@ Route::post('crearpregunta',                   [AdministradorController::class, 
 Route::get ('/EditarPregunta/{id}',            [AdministradorController::class, 'editpregunta'])->name('EditarPRegunta');
 Route::patch('updatepregunta/{id}',            [AdministradorController::class, 'updatepregunta']);
 Route::get('EliminarPregunta/{id}',            [AdministradorController::class, 'destroypregunta']);
-//Route::get ('/NvaTematica',                  [AdministradorController::class, 'createpregunta'])->name('NuevaPregunta');
-//Route::post('crrtematica',                   [AdministradorController::class, 'storepregunta']);
-
 /*--------------------------------------------- Crud admin tematicas ---------------------------------------------*/
+
+/*--------------------------------------------- Guardar Partida ---------------------------------------------*/
+Route::post ( '/GuardarPartida/{ImgJugadores}',     [JuegoController::class, 'guardar'   ] )->name('GuardarPartida');
+Route::get ('/NumPartida/{id}',                     [JuegoController::class, 'numpartida'])->name('NumPatida');
+/*--------------------------------------------- Guardar Partida ---------------------------------------------*/
 
 Auth::routes();

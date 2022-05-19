@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\pregunta;
 use App\Models\Preguntas;
 use App\Models\Tematicas;
+use App\Models\Partidas;
 use App\Models\respuesta;
 use Illuminate\Support\Facades\DB;
 
@@ -77,6 +78,38 @@ class JuegoController extends Controller
     }
 
     public function preguntas(Request $request){
+        $preguntas = pregunta::all();
+        $respuestasc = respuesta::all();
+        return view('JuegoView', compact('preguntas','respuestasc'));
+        // return redirect()->route('Juego');
+    }
+    public function guardar(Request $request, $i){
+        //dd($i);
+        $partida= new Partidas;
+        $partida->nombre1= $request->nombre[0];
+        $partida->avatar1= $request->imagen[0];
+        $partida->puntuacion1= $request->puntaje[0];
+        $partida->tematica_id= $request->tematica;
+        if($i >= 2){
+            $partida->nombre2= $request->nombre[1];
+            $partida->avatar2= $request->imagen[1];
+            $partida->puntuacion2= $request->puntaje[1];
+        }
+        if ($i == 3) {
+            $partida->nombre3= $request->nombre[2];
+            $partida->avatar3= $request->imagen[2];
+            $partida->puntuacion3= $request->puntaje[2];
+        }
+        $partida ->save();
+        $id = DB::getPdo()->lastInsertId();
+        return redirect('NumPartida/'.$id);
+    }
+    public function numpartida($id){
+        //dd($id);
+        return view('NumPartida', compact('id'));
+        // return redirect()->route('Juego');
+    }
+    public function abandonar(Request $request){
         $preguntas = pregunta::all();
         $respuestasc = respuesta::all();
         return view('JuegoView', compact('preguntas','respuestasc'));

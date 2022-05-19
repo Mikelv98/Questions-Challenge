@@ -14,7 +14,6 @@ class Partidas extends Model
      * @var array
      */
     protected $fillable = [
-        'id','user_id','tematica_id'
-
+        'id','nombre1','avatar1','puntuacion1','nombre2','avatar2','puntuacion2','nombre3','avatar3','puntuacion3','tematica_id'
     ];
 }

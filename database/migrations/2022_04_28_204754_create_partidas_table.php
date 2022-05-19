@@ -16,17 +16,20 @@ class CreatePartidasTable extends Migration
         Schema::create('partidas', function (Blueprint $table) {
             $table->engine = 'MyISAM';
             $table->id();
-            $table->integer('user_id');
-            $table->integer('tematica_id');
+            $table->string('nombre1');
+            $table->string('avatar1');
+            $table->integer('puntuacion1');
+            $table->string('nombre2')->nullable();
+            $table->string('avatar2')->nullable();
+            $table->integer('puntuacion2')->nullable();
+            $table->string('nombre3')->nullable();
+            $table->string('avatar3')->nullable();
+            $table->integer('puntuacion3')->nullable();
+            $table->integer('tematica_id')->nullable();
             $table->timestamps();
 
-            $table->index(["user_id"], 'fk_partidas_users1_idx');
             $table->index(["tematica_id"], 'fk_partidas_tematicas1_idx');
 
-            $table->foreign('user_id', 'fk_partidas_users1_idx')
-                ->references('id')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
             $table->foreign('tematica_id', 'fk_partidas_tematicas1_idx')
                 ->references('id')->on('tematicas')
                 ->onDelete('cascade')
