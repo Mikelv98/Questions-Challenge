@@ -23,9 +23,9 @@
         @endphp
 
 
-        <h1>{{ $random + 1 }}</h1>
+
         <h4>{{ $preguntas2[$random]->descripcion }}</h4>
-        <h3>{{ $preguntas2[$random]->respuestacorrecta }}</h3>
+        
 
         @if (($random + 1) % 3 == 2)
             <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuesta1 }}">

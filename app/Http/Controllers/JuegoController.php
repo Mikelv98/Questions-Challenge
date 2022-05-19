@@ -110,9 +110,70 @@ class JuegoController extends Controller
         // return redirect()->route('Juego');
     }
     public function abandonar(Request $request){
-        $preguntas = pregunta::all();
-        $respuestasc = respuesta::all();
-        return view('JuegoView', compact('preguntas','respuestasc'));
+        return redirect('/');
+    }
+
+    public function recuperar(){
+        $tematicas= Tematicas::all();
+        return view('Recuperar', compact('tematicas'));
         // return redirect()->route('Juego');
     }
+    public function recuperarpartida(Request $request){
+        $tematicas= Tematicas::all();
+        $partida=DB::table('partidas')->where('partidas.id',$request->id)
+        ->where('partidas.tematica_id',$request->tematica_id)
+        ->get();
+
+        $preguntas2=DB::table('preguntas')->where('tematica_id',$request->tematica_id)->join('tematicas','preguntas.tematica_id','tematicas.id')
+        ->join('respuestas','respuestas.preguntas_id','preguntas.id')->select('preguntas.*','tematicas.nombre','respuestas.respuestacorrecta')->get();
+        //dd($preguntas2);
+
+        $contadorP = DB::table('preguntas')->count();
+        //print_R($contadorP);
+
+        if($partida[0]->nombre2 == null){
+            $NumJug = 1;
+        }
+        elseif($partida[0]->nombre3 == null){
+            $NumJug = 2;
+        }
+        else{
+            $NumJug = 3;
+        }
+       // dd($NumJug);
+        $NombreJu1 = $partida[0]->nombre1;
+        $ImagenJu1 = $partida[0]->avatar1;
+        $puntajeJugador1 = $partida[0]->puntuacion1;
+
+        if($partida[0]->nombre2 != null){
+            $NombreJu2 = $partida[0]->nombre2;
+            $ImagenJu2 = $partida[0]->avatar2;
+            $puntajeJugador2 = $partida[0]->puntuacion2;
+//dd($ImagenJu3);
+
+            if ($partida[0]->nombre3 != null) {
+                $NombreJu3 = $partida[0]->nombre3;
+                $ImagenJu3 = $partida[0]->avatar3;
+                $puntajeJugador3 = $partida[0]->puntuacion3;
+                $ImgJugadores = [$ImagenJu1,$ImagenJu2,$ImagenJu3];
+                $NameJugadores = [$NombreJu1,$NombreJu2,$NombreJu3];
+                $PuntajeJugadores = [$puntajeJugador1,$puntajeJugador2,$puntajeJugador3];
+                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP'));
+            }
+            else {
+                $ImgJugadores = [$ImagenJu1,$ImagenJu2];
+                $NameJugadores = [$NombreJu1,$NombreJu2];
+                $PuntajeJugadores = [$puntajeJugador1,$puntajeJugador2];
+                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP'));
+            }
+        }
+        else{
+            $ImgJugadores = [$ImagenJu1];
+            $NameJugadores = [$NombreJu1];
+            $PuntajeJugadores = [$puntajeJugador1];
+            return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP'));
+        }
+
+    }
+
 }

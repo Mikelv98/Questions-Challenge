@@ -62,8 +62,14 @@ Route::get('EliminarPregunta/{id}',            [AdministradorController::class, 
 /*--------------------------------------------- Crud admin tematicas ---------------------------------------------*/
 
 /*--------------------------------------------- Guardar Partida ---------------------------------------------*/
-Route::post ( '/GuardarPartida/{ImgJugadores}',     [JuegoController::class, 'guardar'   ] )->name('GuardarPartida');
+Route::post ('/GuardarPartida/{ImgJugadores}',     [JuegoController::class, 'guardar'   ] )->name('GuardarPartida');
 Route::get ('/NumPartida/{id}',                     [JuegoController::class, 'numpartida'])->name('NumPatida');
 /*--------------------------------------------- Guardar Partida ---------------------------------------------*/
+
+/*--------------------------------------------- Recuperar Partida ---------------------------------------------*/
+Route::post ('/RecuperarPartida',           [JuegoController::class, 'recuperarpartida'   ] )->name('RecuperarPartida');
+Route::get ('/Recuperar',                   [JuegoController::class, 'recuperar'])->name('Recuperar');
+Route::get ('/AbandonarPartida',            [JuegoController::class, 'abandonar'])->name('AbandonarPartida');
+/*--------------------------------------------- Recuperar Partida ---------------------------------------------*/
 
 Auth::routes();

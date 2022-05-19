@@ -21,4 +21,7 @@ class Tematicas extends Model
     public function pregunta(){
         return $this->hasMany('App\Models\Preguntas');
     }
+    public function partida(){
+        return $this->hasMany('App\Models\Partidas');
+    }
 }
