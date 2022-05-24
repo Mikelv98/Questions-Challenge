@@ -52,7 +52,7 @@
                     <label for="tabla{{$i+1}}">
                         <img class="selectPersonajes" src="{{ url('images/avatares/tabla.png')}}" alt="">
                     </label>
-
+                    
                 </div>
             @endfor
             
@@ -62,7 +62,7 @@
 
     </section>
 
-       
+    
 @endsection
 
 @section('scripts')

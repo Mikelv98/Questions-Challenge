@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="{{ url('images\questionChallenge3.png') }}">
     <!-- <link href="css/JuegoStyle.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="css/JuegoStyle.css">
-    <script type="text/javascript" src="js/sigPreg.js"></script>
     <title>Question Challenge</title>
 </head>
 
@@ -22,6 +21,14 @@
     @endphp
     <form id="Form" action="{{ route('JuegoPregunta') }}" method="post">
         @csrf
+
+
+        @php
+            $random = rand(1, $contadorP - 1);
+            $randomlist = [];
+            array_push($randomlist, $random);
+            //  print_r($randomlist);
+        @endphp
 
         <h4>{{ $preguntas2[$random]->descripcion }}</h4>
 
@@ -148,7 +155,19 @@
         </div>
 
     </div>
+    <script type="text/javascript" src="{{ url('js\sigPreg.js') }}"></script>
+    <script>
+        // let switchColor = document.getElementsByClassName('respuesta');
+        // switchColor[0].onclick = () => {
 
+        // }
+        // switchColor[1].onclick = () => {
+
+        // }
+        // switchColor[2].onclick = () => {
+
+        // }
+    </script>
 </body>
 <style>
     input:checked~.radio {
