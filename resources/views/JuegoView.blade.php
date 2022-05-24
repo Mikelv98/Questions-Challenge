@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="{{ url('images\questionChallenge3.png') }}">
     <!-- <link href="css/JuegoStyle.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="css/JuegoStyle.css">
-    <script type="text/javascript" src="js/sigPreg.js"></script>
     <title>Question Challenge</title>
 </head>
 
@@ -17,6 +16,7 @@
     <form id="Form" action="{{ route('JuegoPregunta') }}" method="post">
         @csrf
 
+
         @php
             $random = rand(1, $contadorP - 1);
             $randomlist = [];
@@ -24,25 +24,21 @@
             //  print_r($randomlist);
         @endphp
 
-
-
         <h4>{{ $preguntas2[$random]->descripcion }}</h4>
         
         @if (($random + 1) % 3 == 2)
             <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuesta1 }}">
             <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuesta2 }}">
-            <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuestacorrecta }}">
+            <input class="respuesta" type="button" id="rc" value="{{ $preguntas2[$random]->respuestacorrecta }}">
         @elseif (($random + 1) % 3 == 1)
             <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuesta1 }}">
-            <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuestacorrecta }}">
+            <input class="respuesta" type="button" id="rc" value="{{ $preguntas2[$random]->respuestacorrecta }}">
             <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuesta2 }}">
         @else
-        <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuestacorrecta }}">
-        <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuesta2 }}">
-        <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuesta1 }}">
+            <input class="respuesta" type="button" id="rc" value="{{ $preguntas2[$random]->respuestacorrecta }}">
+            <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuesta2 }}">
+            <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuesta1 }}">
         @endif
-
-
 
         <input class="enviar" type="submit" value="Enviar">
     </form>
@@ -95,7 +91,19 @@
         </div>
         
     </div>
-
+    <script type="text/javascript" src="{{ url('js\sigPreg.js') }}"></script>
+    <script>
+        // let switchColor = document.getElementsByClassName('respuesta');
+        // switchColor[0].onclick = () => {
+            
+        // }
+        // switchColor[1].onclick = () => { 
+            
+        // }
+        // switchColor[2].onclick = () => { 
+            
+        // }
+    </script>
 </body>
 
 </html>

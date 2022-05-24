@@ -38,7 +38,7 @@ class JuegoController extends Controller
                         ->join('respuestas','respuestas.preguntas_id','preguntas.id')->select('preguntas.*','tematicas.nombre','respuestas.respuestacorrecta')->get();
        // print_r($preguntas2);
 
-        $contadorP = DB::table('preguntas')->count();
+        $contadorP = DB::table('preguntas')->where('tematica_id',$request->Tematica)->count();
         //print_R($contadorP);
 
 
