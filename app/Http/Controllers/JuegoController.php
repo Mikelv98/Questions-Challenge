@@ -81,13 +81,21 @@ class JuegoController extends Controller
 //dd($request);
         $pregunt = Preguntas::find($request->idpreg);
         if($pregunt->respuesta->respuestacorrecta == $request->respuestaselec){
-            $PuntajeJugadores = [$request->puntaje[0] + $pregunt->puntaje,$request->puntaje[1] + $pregunt->puntaje,$request->puntaje[2] + $pregunt->puntaje];
+            if($request->cantjug ==1){
+                $PuntajeJugadores = [$request->puntaje[0]+ $pregunt->puntaje];
+            }
+            elseif($request->cantjug ==2){
+                $PuntajeJugadores = [$request->puntaje[0] + $pregunt->puntaje,$request->puntaje[1]+ $pregunt->puntaje];
+            }
+            else{
+                $PuntajeJugadores = [$request->puntaje[0] + $pregunt->puntaje,$request->puntaje[1] + $pregunt->puntaje, $request->puntaje[2] + $pregunt->puntaje];
+            }
         }
         else{
             $PuntajeJugadores = $request->puntaje;
         }
 
-        $NumJug = $request->NumJugadores;
+        $NumJug = $request->cantjug;
         $ImgJugadores = $request->imagen;
         $NameJugadores = $request->nombre;
 
