@@ -158,6 +158,9 @@
         </div>
 
     </div>
+    {{-- <script type="text/javascript" src="js/sigPreg.js"></script> --}}
+    {{-- <script src="{{ url('js\sigPreg.js') }}"></script> --}}
+    
     <script type="text/javascript" src="{{ url('js\sigPreg.js') }}"></script>
     <script>
         // let switchColor = document.getElementsByClassName('respuesta');
