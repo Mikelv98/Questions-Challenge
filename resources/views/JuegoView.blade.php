@@ -147,6 +147,7 @@
                 @endforeach
                 <input hidden name="tematica" value="{{ $preguntas2[$random]->tematica_id }}" />
                 <input hidden name="cantjug" value="{{ $NumJug}}" />
+                <input hidden name="turno" value="{{ $turno }}" />
                 <input class="enviar" type="submit" value="Guardar">
             </form>
 

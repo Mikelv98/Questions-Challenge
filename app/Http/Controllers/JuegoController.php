@@ -130,12 +130,13 @@ class JuegoController extends Controller
         // return redirect()->route('Juego');
     }
     public function guardar(Request $request, $i){
-        //dd($i);
+        //dd($request);
         $partida= new Partidas;
         $partida->nombre1= $request->nombre[0];
         $partida->avatar1= $request->imagen[0];
         $partida->puntuacion1= $request->puntaje[0];
         $partida->tematica_id= $request->tematica;
+        $partida->turno= $request->turno;
         if($i >= 2){
             $partida->nombre2= $request->nombre[1];
             $partida->avatar2= $request->imagen[1];
@@ -172,8 +173,8 @@ class JuegoController extends Controller
                         ->join('respuestas','respuestas.preguntas_id','preguntas.id')->select('preguntas.*','tematicas.nombre','respuestas.respuestacorrecta')->get();
         //dd($preguntas2);
 
-        $contadorP = DB::table('preguntas')->where('tematica_id',$request->Tematica)->count();
-        //print_R($contadorP);
+        $contadorP = DB::table('preguntas')->where('tematica_id',$request->tematica_id)->count();
+        //dd($contadorP);
 
         if($partida[0]->nombre2 == null){
             $NumJug = 1;
@@ -185,6 +186,13 @@ class JuegoController extends Controller
             $NumJug = 3;
         }
        // dd($NumJug);
+       if($partida[0]->turno+1 == $NumJug){
+           $turno=0;
+       }
+       else{$turno= $partida[0]->turno+1;}
+
+       //dd($turno);
+
         $NombreJu1 = $partida[0]->nombre1;
         $ImagenJu1 = $partida[0]->avatar1;
         $puntajeJugador1 = $partida[0]->puntuacion1;
