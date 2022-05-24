@@ -91,19 +91,9 @@
         </div>
         
     </div>
-    <script type="text/javascript" src="{{ url('js\sigPreg.js') }}"></script>
-    <script>
-        // let switchColor = document.getElementsByClassName('respuesta');
-        // switchColor[0].onclick = () => {
-            
-        // }
-        // switchColor[1].onclick = () => { 
-            
-        // }
-        // switchColor[2].onclick = () => { 
-            
-        // }
-    </script>
+    {{-- <script type="text/javascript" src="js/sigPreg.js"></script> --}}
+    {{-- <script src="{{ url('js\sigPreg.js') }}"></script> --}}
+    
 </body>
 
 </html>
