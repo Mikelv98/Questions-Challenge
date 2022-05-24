@@ -39,9 +39,10 @@ class JuegoController extends Controller
        // print_r($preguntas2);
 
        $contadorP = DB::table('preguntas')->where('tematica_id',$request->Tematica)->count();
+
         //print_R($contadorP);
 
-
+        $turno = 0;
         $NumJug = $request->NumJugadores;
         $NombreJu1 = $request->Nombrejugador1;
         $ImagenJu1 = 'images/avatares/'.$request->image1.'.png';
@@ -59,36 +60,54 @@ class JuegoController extends Controller
                 $ImgJugadores = [$ImagenJu1,$ImagenJu2,$ImagenJu3];
                 $NameJugadores = [$NombreJu1,$NombreJu2,$NombreJu3];
                 $PuntajeJugadores = [$puntajeJugador1,$puntajeJugador2,$puntajeJugador3];
-                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP'));
+                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno'));
             }
             else {
                 $ImgJugadores = [$ImagenJu1,$ImagenJu2];
                 $NameJugadores = [$NombreJu1,$NombreJu2];
                 $PuntajeJugadores = [$puntajeJugador1,$puntajeJugador2];
-                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP'));
+                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno'));
             }
         }
         else{
             $ImgJugadores = [$ImagenJu1];
             $NameJugadores = [$NombreJu1];
             $PuntajeJugadores = [$puntajeJugador1];
-            return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP'));
+            return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno'));
         }
 
     }
 
     public function preguntas(Request $request){
 //dd($request);
+    if($request->turno+1 == $request->cantjug ){
+        $turno=0;
+    }
+    else{$turno=$request->turno+1;}
+//dd($turno);
         $pregunt = Preguntas::find($request->idpreg);
         if($pregunt->respuesta->respuestacorrecta == $request->respuestaselec){
-            if($request->cantjug ==1){
-                $PuntajeJugadores = [$request->puntaje[0]+ $pregunt->puntaje];
+            if($request->cantjug==2){
+                if($request->turno ==1){
+                    $PuntajeJugadores = [$request->puntaje[0],$request->puntaje[1] + $pregunt->puntaje];
+                }
+                else{
+                    $PuntajeJugadores = [$request->puntaje[0] + $pregunt->puntaje,$request->puntaje[1]];
+                }
             }
-            elseif($request->cantjug ==2){
-                $PuntajeJugadores = [$request->puntaje[0] + $pregunt->puntaje,$request->puntaje[1]+ $pregunt->puntaje];
+            elseif($request->cantjug==3){
+                if($request->turno ==1){
+                    $PuntajeJugadores = [$request->puntaje[0],$request->puntaje[1] + $pregunt->puntaje, $request->puntaje[2]];
+                }
+                elseif($request->turno ==2){
+                    $PuntajeJugadores = [$request->puntaje[0],$request->puntaje[1], $request->puntaje[2] + $pregunt->puntaje];
+                }
+                else{
+                    $PuntajeJugadores = [$request->puntaje[0] + $pregunt->puntaje,$request->puntaje[1], $request->puntaje[2]];
+                }
             }
             else{
-                $PuntajeJugadores = [$request->puntaje[0] + $pregunt->puntaje,$request->puntaje[1] + $pregunt->puntaje, $request->puntaje[2] + $pregunt->puntaje];
+                $PuntajeJugadores = [$request->puntaje[0] + $pregunt->puntaje];
             }
         }
         else{
@@ -104,7 +123,7 @@ class JuegoController extends Controller
 
         $contadorP = DB::table('preguntas')->where('tematica_id',$request->tematica)->count();
 //dd($contadorP);
-        return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP'));
+        return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno'));
         //print_r($pregunt->respuesta->respuestacorrecta);
         //$respuestasc = respuesta::all();
         //return view('JuegoView', compact('preguntas','respuestasc'));
@@ -183,20 +202,20 @@ class JuegoController extends Controller
                 $ImgJugadores = [$ImagenJu1,$ImagenJu2,$ImagenJu3];
                 $NameJugadores = [$NombreJu1,$NombreJu2,$NombreJu3];
                 $PuntajeJugadores = [$puntajeJugador1,$puntajeJugador2,$puntajeJugador3];
-                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP'));
+                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno'));
             }
             else {
                 $ImgJugadores = [$ImagenJu1,$ImagenJu2];
                 $NameJugadores = [$NombreJu1,$NombreJu2];
                 $PuntajeJugadores = [$puntajeJugador1,$puntajeJugador2];
-                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP'));
+                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno'));
             }
         }
         else{
             $ImgJugadores = [$ImagenJu1];
             $NameJugadores = [$NombreJu1];
             $PuntajeJugadores = [$puntajeJugador1];
-            return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP'));
+            return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno'));
         }
 
     }

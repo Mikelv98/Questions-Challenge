@@ -26,6 +26,7 @@ class CreatePartidasTable extends Migration
             $table->string('avatar3')->nullable();
             $table->integer('puntuacion3')->nullable();
             $table->integer('tematica_id')->nullable();
+            $table->integer('turno')->nullable();
             $table->timestamps();
 
             $table->index(["tematica_id"], 'fk_partidas_tematicas1_idx');

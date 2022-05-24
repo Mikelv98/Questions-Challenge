@@ -19,6 +19,7 @@
         array_push($randomlist, $random);
         //  print_r($randomlist);
     @endphp
+
     <form id="Form" action="{{ route('JuegoPregunta') }}" method="post">
         @csrf
 
@@ -29,7 +30,7 @@
             array_push($randomlist, $random);
             //  print_r($randomlist);
         @endphp
-
+        <h1>{{ $NameJugadores[$turno] }}</h1>
         <h4>{{ $preguntas2[$random]->descripcion }}</h4>
 
         @if (($random + 1) % 3 == 2)
@@ -103,8 +104,9 @@
             @endphp
         @endforeach
         <input hidden name="tematica" value="{{ $preguntas2[$random]->tematica_id }}" />
-        <input hidden name="cantjug" value="{{ $NumJug}}" />
+        <input hidden name="cantjug" value="{{ $NumJug }}" />
         <input hidden name="idpreg" value="{{ $preguntas2[$random]->id}}" />
+        <input hidden name="turno" value="{{ $turno }}" />
         <input class="enviar" type="submit" value="Enviar">
     </form>
 
