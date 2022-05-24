@@ -13,6 +13,12 @@
 
 <body id="Juego">
     {{-- <h1>Game</h1> --}}
+    @php
+        $random = rand(1, $contadorP - 1);
+        $randomlist = [];
+        array_push($randomlist, $random);
+        //  print_r($randomlist);
+    @endphp
     <form id="Form" action="{{ route('JuegoPregunta') }}" method="post">
         @csrf
 
@@ -25,21 +31,80 @@
         @endphp
 
         <h4>{{ $preguntas2[$random]->descripcion }}</h4>
-        
+
         @if (($random + 1) % 3 == 2)
-            <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuesta1 }}">
-            <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuesta2 }}">
-            <input class="respuesta" type="button" id="rc" value="{{ $preguntas2[$random]->respuestacorrecta }}">
+            <div class="respuesta">
+                <div class="respuesta">
+                    <input type="radio" name="respuestaselec" id="respuesta1"
+                        value="{{ $preguntas2[$random]->respuesta1 }}" class="hidden" />
+                    <label for="respuesta1" class="radio respuesta">{{ $preguntas2[$random]->respuesta1 }}</label>
+                </div>
+                <div class="respuesta">
+                    <input type="radio" name="respuestaselec" id="respuesta2"
+                        value="{{ $preguntas2[$random]->respuesta2 }}" class="hidden" />
+                    <label for="respuesta2" class="radio respuesta">{{ $preguntas2[$random]->respuesta2 }}</label>
+                </div>
+                <div class="respuesta">
+                    <input type="radio" name="respuestaselec" id="respuestacorrecta"
+                        value="{{ $preguntas2[$random]->respuestacorrecta }}" class="hidden" />
+                    <label for="respuestacorrecta"
+                        class="radio respuesta">{{ $preguntas2[$random]->respuestacorrecta }}</label>
+                </div>
+            </div>
         @elseif (($random + 1) % 3 == 1)
-            <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuesta1 }}">
-            <input class="respuesta" type="button" id="rc" value="{{ $preguntas2[$random]->respuestacorrecta }}">
-            <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuesta2 }}">
+            <div class="respuesta">
+                <div class="respuesta">
+                    <input type="radio" name="respuestaselec" id="respuesta1"
+                        value="{{ $preguntas2[$random]->respuesta1 }}" class="hidden" />
+                    <label for="respuesta1" class="radio respuesta">{{ $preguntas2[$random]->respuesta1 }}</label>
+                </div>
+                <div class="respuesta">
+                    <input type="radio" name="respuestaselec" id="respuestacorrecta"
+                        value="{{ $preguntas2[$random]->respuestacorrecta }}" class="hidden" />
+                    <label for="respuestacorrecta"
+                        class="radio respuesta">{{ $preguntas2[$random]->respuestacorrecta }}</label>
+                </div>
+                <div class="respuesta">
+                    <input type="radio" name="respuestaselec" id="respuesta2"
+                        value="{{ $preguntas2[$random]->respuesta2 }}" class="hidden" />
+                    <label for="respuesta2" class="radio respuesta">{{ $preguntas2[$random]->respuesta2 }}</label>
+                </div>
+            </div>
         @else
-            <input class="respuesta" type="button" id="rc" value="{{ $preguntas2[$random]->respuestacorrecta }}">
-            <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuesta2 }}">
-            <input class="respuesta" type="button" value="{{ $preguntas2[$random]->respuesta1 }}">
+            <div class="respuesta">
+                <div class="respuesta">
+                    <input type="radio" name="respuestaselec" id="respuestacorrecta"
+                        value="{{ $preguntas2[$random]->respuestacorrecta }}" class="hidden" />
+                    <label for="respuestacorrecta"
+                        class="radio respuesta">{{ $preguntas2[$random]->respuestacorrecta }}</label>
+                </div>
+                <div class="respuesta">
+                    <input type="radio" name="respuestaselec" id="respuesta2"
+                        value="{{ $preguntas2[$random]->respuesta2 }}" class="hidden" />
+                    <label for="respuesta2" class="radio respuesta">{{ $preguntas2[$random]->respuesta2 }}</label>
+                </div>
+                <div class="respuesta">
+                    <input type="radio" name="respuestaselec" id="respuesta1"
+                        value="{{ $preguntas2[$random]->respuesta1 }}" class="hidden" />
+                    <label for="respuesta1" class="radio respuesta">{{ $preguntas2[$random]->respuesta1 }}</label>
+                </div>
+            </div>
         @endif
 
+        @php
+            $i = 0;
+        @endphp
+        @foreach ($ImgJugadores as $item)
+            <input hidden name="imagen[]" value="{{ $item }}" />
+            <input hidden name="puntaje[]" value="{{ $PuntajeJugadores[$i] }}" />
+            <input hidden name="nombre[]" value="{{ $NameJugadores[$i] }}" />
+            @php
+                $i++;
+            @endphp
+        @endforeach
+        <input hidden name="tematica" value="{{ $preguntas2[$random]->tematica_id }}" />
+        <input hidden name="cantjug" value="{{ $NumJug}}" />
+        <input hidden name="idpreg" value="{{ $preguntas2[$random]->id}}" />
         <input class="enviar" type="submit" value="Enviar">
     </form>
 
@@ -59,7 +124,7 @@
             </figure>
             @php
                 $i++;
-                $ii=$i;
+                $ii = $i;
             @endphp
         @endforeach
 
@@ -71,29 +136,48 @@
                     $i = 0;
                 @endphp
                 @foreach ($ImgJugadores as $item)
-
-                        <input hidden name="imagen[]" value="{{ $item }}"/>
-                        <input hidden name="puntaje[]" value="{{ $PuntajeJugadores[$i] }}" />
-                        <input hidden name="nombre[]" value="{{ $NameJugadores[$i] }}"/>
+                    <input hidden name="imagen[]" value="{{ $item }}" />
+                    <input hidden name="puntaje[]" value="{{ $PuntajeJugadores[$i] }}" />
+                    <input hidden name="nombre[]" value="{{ $NameJugadores[$i] }}" />
                     @php
                         $i++;
                     @endphp
-
                 @endforeach
-                <input hidden name="tematica" value="{{ $preguntas2[$random]->tematica_id }}"/>
+                <input hidden name="tematica" value="{{ $preguntas2[$random]->tematica_id }}" />
+                <input hidden name="cantjug" value="{{ $NumJug}}" />
                 <input class="enviar" type="submit" value="Guardar">
             </form>
 
-            <form class="Accion" action="{{ route('AbandonarPartida') }}" method="post">
+            <form class="Accion" action="{{ route('Abandonar') }}" method="post">
                 @csrf
                 <input class="enviar" type="submit" value="Abandonar">
             </form>
         </div>
-        
+
     </div>
     {{-- <script type="text/javascript" src="js/sigPreg.js"></script> --}}
     {{-- <script src="{{ url('js\sigPreg.js') }}"></script> --}}
     
+    <script type="text/javascript" src="{{ url('js\sigPreg.js') }}"></script>
+    <script>
+        // let switchColor = document.getElementsByClassName('respuesta');
+        // switchColor[0].onclick = () => {
+
+        // }
+        // switchColor[1].onclick = () => {
+
+        // }
+        // switchColor[2].onclick = () => {
+
+        // }
+    </script>
 </body>
+<style>
+    input:checked~.radio {
+        color: black;
+        background-color: aquamarine;
+    }
+
+</style>
 
 </html>

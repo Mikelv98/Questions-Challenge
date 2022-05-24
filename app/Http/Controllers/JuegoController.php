@@ -38,7 +38,7 @@ class JuegoController extends Controller
                         ->join('respuestas','respuestas.preguntas_id','preguntas.id')->select('preguntas.*','tematicas.nombre','respuestas.respuestacorrecta')->get();
        // print_r($preguntas2);
 
-        $contadorP = DB::table('preguntas')->where('tematica_id',$request->Tematica)->count();
+       $contadorP = DB::table('preguntas')->where('tematica_id',$request->Tematica)->count();
         //print_R($contadorP);
 
 
@@ -78,9 +78,36 @@ class JuegoController extends Controller
     }
 
     public function preguntas(Request $request){
-        $preguntas = pregunta::all();
-        $respuestasc = respuesta::all();
-        return view('JuegoView', compact('preguntas','respuestasc'));
+//dd($request);
+        $pregunt = Preguntas::find($request->idpreg);
+        if($pregunt->respuesta->respuestacorrecta == $request->respuestaselec){
+            if($request->cantjug ==1){
+                $PuntajeJugadores = [$request->puntaje[0]+ $pregunt->puntaje];
+            }
+            elseif($request->cantjug ==2){
+                $PuntajeJugadores = [$request->puntaje[0] + $pregunt->puntaje,$request->puntaje[1]+ $pregunt->puntaje];
+            }
+            else{
+                $PuntajeJugadores = [$request->puntaje[0] + $pregunt->puntaje,$request->puntaje[1] + $pregunt->puntaje, $request->puntaje[2] + $pregunt->puntaje];
+            }
+        }
+        else{
+            $PuntajeJugadores = $request->puntaje;
+        }
+
+        $NumJug = $request->cantjug;
+        $ImgJugadores = $request->imagen;
+        $NameJugadores = $request->nombre;
+
+        $preguntas2=DB::table('preguntas')->where('tematica_id',$request->tematica)->join('tematicas','preguntas.tematica_id','tematicas.id')
+                        ->join('respuestas','respuestas.preguntas_id','preguntas.id')->select('preguntas.*','tematicas.nombre','respuestas.respuestacorrecta')->get();
+
+        $contadorP = DB::table('preguntas')->where('tematica_id',$request->tematica)->count();
+//dd($contadorP);
+        return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP'));
+        //print_r($pregunt->respuesta->respuestacorrecta);
+        //$respuestasc = respuesta::all();
+        //return view('JuegoView', compact('preguntas','respuestasc'));
         // return redirect()->route('Juego');
     }
     public function guardar(Request $request, $i){
@@ -120,15 +147,13 @@ class JuegoController extends Controller
     }
     public function recuperarpartida(Request $request){
         $tematicas= Tematicas::all();
-        $partida=DB::table('partidas')->where('partidas.id',$request->id)
-        ->where('partidas.tematica_id',$request->tematica_id)
-        ->get();
+        $partida=DB::table('partidas')->where('partidas.id',$request->id)->where('partidas.tematica_id',$request->tematica_id)->get();
 
         $preguntas2=DB::table('preguntas')->where('tematica_id',$request->tematica_id)->join('tematicas','preguntas.tematica_id','tematicas.id')
-        ->join('respuestas','respuestas.preguntas_id','preguntas.id')->select('preguntas.*','tematicas.nombre','respuestas.respuestacorrecta')->get();
+                        ->join('respuestas','respuestas.preguntas_id','preguntas.id')->select('preguntas.*','tematicas.nombre','respuestas.respuestacorrecta')->get();
         //dd($preguntas2);
 
-        $contadorP = DB::table('preguntas')->count();
+        $contadorP = DB::table('preguntas')->where('tematica_id',$request->Tematica)->count();
         //print_R($contadorP);
 
         if($partida[0]->nombre2 == null){

@@ -69,7 +69,7 @@ Route::get ('/NumPartida/{id}',                     [JuegoController::class, 'nu
 /*--------------------------------------------- Recuperar Partida ---------------------------------------------*/
 Route::post ('/RecuperarPartida',           [JuegoController::class, 'recuperarpartida'   ] )->name('RecuperarPartida');
 Route::get ('/Recuperar',                   [JuegoController::class, 'recuperar'])->name('Recuperar');
-Route::get ('/AbandonarPartida',            [JuegoController::class, 'abandonar'])->name('AbandonarPartida');
+Route::get ('/Abandonar',            [JuegoController::class, 'abandonar'])->name('Abandonar');
 /*--------------------------------------------- Recuperar Partida ---------------------------------------------*/
 
 Auth::routes();
