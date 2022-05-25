@@ -34,7 +34,7 @@
                 <figure id="logoHome">
                     <img src="images\questionChallenge.png" alt="Foto de logo" />
                 </figure>
-                <a class="jugarHome" href="Select" name ="JugarHome"><button>Juego Nueva</button></a>
+                <a class="jugarHome" href="Select" name ="JugarHome"><button>Juego Nuevo</button></a>
                 <hr class="dividir" />
                 <a class="jugarHome" href="Recuperar" name ="JugarHome"><button>Continuar Partida</button></a>
             </section>
