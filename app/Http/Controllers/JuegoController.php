@@ -97,12 +97,14 @@ class JuegoController extends Controller
                 if($PuntajeJugadores[0] >= 30){
                     $Puntuacion= $PuntajeJugadores[0];
                     $Ganador= $request->nombre[0];
-                    return view('ganador', compact('Puntuacion','Ganador'));
+                    $Foto= $request->imagen[0];
+                    return view('ganador', compact('Puntuacion','Ganador','Foto'));
                 }
                 else if($PuntajeJugadores[1] >= 30){
                     $Puntuacion= $PuntajeJugadores[1];
                     $Ganador= $request->nombre[1];
-                    return view('ganador', compact('Puntuacion','Ganador'));
+                    $Foto= $request->imagen[1];
+                    return view('ganador', compact('Puntuacion','Ganador','Foto'));
                 }
             }
             elseif($request->cantjug==3){
@@ -118,17 +120,20 @@ class JuegoController extends Controller
                 if($PuntajeJugadores[0] >= 30){
                     $Puntuacion= $PuntajeJugadores[0];
                     $Ganador= $request->nombre[0];
-                    return view('ganador', compact('Puntuacion','Ganador'));
+                    $Foto= $request->imagen[0];
+                    return view('ganador', compact('Puntuacion','Ganador','Foto'));
                 }
                 else if($PuntajeJugadores[1] >= 30){
                     $Puntuacion= $PuntajeJugadores[1];
                     $Ganador= $request->nombre[1];
-                    return view('ganador', compact('Puntuacion','Ganador'));
+                    $Foto= $request->imagen[1];
+                    return view('ganador', compact('Puntuacion','Ganador','Foto'));
                 }
                 else if($PuntajeJugadores[2] >=30){
                     $Puntuacion= $PuntajeJugadores[2];
                     $Ganador= $request->nombre[2];
-                    return view('ganador', compact('Puntuacion','Ganador'));
+                    $Foto= $request->imagen[2];
+                    return view('ganador', compact('Puntuacion','Ganador','Foto'));
                 }
             }
             else{
@@ -136,7 +141,8 @@ class JuegoController extends Controller
                 if($PuntajeJugadores[0] >= 30 ){
                     $Puntuacion= $PuntajeJugadores[0];
                     $Ganador= $request->nombre[0];
-                    return view('ganador', compact('Puntuacion','Ganador'));
+                    $Foto= $request->imagen[0];
+                    return view('ganador', compact('Puntuacion','Ganador','Foto'));
                 }
             }
         }
