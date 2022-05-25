@@ -30,7 +30,7 @@
             array_push($randomlist, $random);
             //  print_r($randomlist);
         @endphp
-        <h1>{{ $NameJugadores[$turno] }}</h1>
+        <h1>Turno de : {{ $NameJugadores[$turno] }}</h1>
         <h4>{{ $preguntas2[$random]->descripcion }}</h4>
 
         @if (($random + 1) % 3 == 2)

@@ -8,12 +8,12 @@
 @section('contenido')
 <section id="Seleccion">
     <a id="Opciones" href="/">
-        <h1 class="titulo">El ganador es: {{ $Ganador }}
+        <h1 class="titulo">El ganador es: {{ $Ganador }}</h1>
         <img src="{{ $Foto }}" alt="Avatar"></h1>
         <hr class="dividir" />
-        <h1 class="titulo">Tu puntuacion es de: {{ $Puntuacion }}</h1>
+        <h1 class="titulo">Tu puntuación es de: {{ $Puntuacion }}</h1>
     </a>
-    <a id="Opciones" href="/">
+    <a id="Opciones" href="{{ url('/') }}">
         <h1 class="titulo">Aceptar</h1>
     </a>
 </section>
