@@ -94,6 +94,16 @@ class JuegoController extends Controller
                 else{
                     $PuntajeJugadores = [$request->puntaje[0] + $pregunt->puntaje,$request->puntaje[1]];
                 }
+                if($PuntajeJugadores[0] >= 30){
+                    $Puntuacion= $PuntajeJugadores[0];
+                    $Ganador= $request->nombre[0];
+                    return view('ganador', compact('Puntuacion','Ganador'));
+                }
+                else if($PuntajeJugadores[1] >= 30){
+                    $Puntuacion= $PuntajeJugadores[1];
+                    $Ganador= $request->nombre[1];
+                    return view('ganador', compact('Puntuacion','Ganador'));
+                }
             }
             elseif($request->cantjug==3){
                 if($request->turno ==1){
@@ -105,9 +115,29 @@ class JuegoController extends Controller
                 else{
                     $PuntajeJugadores = [$request->puntaje[0] + $pregunt->puntaje,$request->puntaje[1], $request->puntaje[2]];
                 }
+                if($PuntajeJugadores[0] >= 30){
+                    $Puntuacion= $PuntajeJugadores[0];
+                    $Ganador= $request->nombre[0];
+                    return view('ganador', compact('Puntuacion','Ganador'));
+                }
+                else if($PuntajeJugadores[1] >= 30){
+                    $Puntuacion= $PuntajeJugadores[1];
+                    $Ganador= $request->nombre[1];
+                    return view('ganador', compact('Puntuacion','Ganador'));
+                }
+                else if($PuntajeJugadores[2] >=30){
+                    $Puntuacion= $PuntajeJugadores[2];
+                    $Ganador= $request->nombre[2];
+                    return view('ganador', compact('Puntuacion','Ganador'));
+                }
             }
             else{
                 $PuntajeJugadores = [$request->puntaje[0] + $pregunt->puntaje];
+                if($PuntajeJugadores[0] >= 30 ){
+                    $Puntuacion= $PuntajeJugadores[0];
+                    $Ganador= $request->nombre[0];
+                    return view('ganador', compact('Puntuacion','Ganador'));
+                }
             }
         }
         else{
@@ -123,6 +153,7 @@ class JuegoController extends Controller
 
         $contadorP = DB::table('preguntas')->where('tematica_id',$request->tematica)->count();
 //dd($contadorP);
+        
         return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno'));
         //print_r($pregunt->respuesta->respuestacorrecta);
         //$respuestasc = respuesta::all();
