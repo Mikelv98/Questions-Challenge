@@ -14,8 +14,8 @@
 <body id="Juego">
     {{-- <h1>Game</h1> --}}
     @php
-        $random = rand(1, $contadorP - 1);
-        
+        $random = rand(0, $contadorP - 1);
+        //dd($contadorP);
          array_push($randomlist, $preguntas2[$random]->id);
         //  print_r($randomlist);
     @endphp
