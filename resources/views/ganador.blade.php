@@ -11,7 +11,7 @@
         <h1 class="titulo">El ganador es: {{ $Ganador }}
         <img src="{{ $Foto }}" alt="Avatar"></h1>
         <hr class="dividir" />
-        <h1 class="titulo">Tu puntuacion es de: {{ $Puntuacion }}</h1>
+        <h1 class="titulo">Tu puntuación es de: {{ $Puntuacion }}</h1>
     </a>
     <a id="Opciones" href="/">
         <h1 class="titulo">Aceptar</h1>
