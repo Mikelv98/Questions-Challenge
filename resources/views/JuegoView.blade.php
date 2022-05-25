@@ -15,8 +15,8 @@
     {{-- <h1>Game</h1> --}}
     @php
         $random = rand(1, $contadorP - 1);
-        $randomlist = [];
-        array_push($randomlist, $random);
+        
+         array_push($randomlist, $preguntas2[$random]->id);
         //  print_r($randomlist);
     @endphp
 
@@ -24,12 +24,6 @@
         @csrf
 
 
-        @php
-            $random = rand(1, $contadorP - 1);
-            $randomlist = [];
-            array_push($randomlist, $random);
-            //  print_r($randomlist);
-        @endphp
         <h1>Turno de : {{ $NameJugadores[$turno] }}</h1>
         <h4>{{ $preguntas2[$random]->descripcion }}</h4>
 
@@ -107,6 +101,10 @@
         <input hidden name="cantjug" value="{{ $NumJug }}" />
         <input hidden name="idpreg" value="{{ $preguntas2[$random]->id}}" />
         <input hidden name="turno" value="{{ $turno }}" />
+
+        
+            <input hidden name="list" value="{{ json_encode($randomlist,TRUE) }}" />
+
         <input class="enviar" type="submit" value="Enviar">
     </form>
 

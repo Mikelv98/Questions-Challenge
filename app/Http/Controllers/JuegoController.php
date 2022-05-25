@@ -34,11 +34,14 @@ class JuegoController extends Controller
             ->join('preguntas','preguntas.idPregunta','=','respuestas.idPregunta')
             ->where('preguntas.idTematica','=',$request->Tematica)->get();
 */
+//$resultado = $conexion ->query("select * from productos where id NOT IN($ids) and inventario>0 limit ".$limite)or die($conexion->error);
+        $randomlist = [0];
         $preguntas2=DB::table('preguntas')->where('tematica_id',$request->Tematica)->join('tematicas','preguntas.tematica_id','tematicas.id')
-                        ->join('respuestas','respuestas.preguntas_id','preguntas.id')->select('preguntas.*','tematicas.nombre','respuestas.respuestacorrecta')->get();
-       // print_r($preguntas2);
-
-       $contadorP = DB::table('preguntas')->where('tematica_id',$request->Tematica)->count();
+                        ->join('respuestas','respuestas.preguntas_id','preguntas.id')
+                        ->whereNotIn('preguntas.id',$randomlist)->select('preguntas.*','tematicas.nombre','respuestas.respuestacorrecta')->get();
+       // dd($randomlist);
+       
+       $contadorP = DB::table('preguntas')->where('tematica_id',$request->tematica)->whereNotIn('preguntas.id',$randomlist)->count();
 
         //print_R($contadorP);
 
@@ -60,26 +63,29 @@ class JuegoController extends Controller
                 $ImgJugadores = [$ImagenJu1,$ImagenJu2,$ImagenJu3];
                 $NameJugadores = [$NombreJu1,$NombreJu2,$NombreJu3];
                 $PuntajeJugadores = [$puntajeJugador1,$puntajeJugador2,$puntajeJugador3];
-                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno'));
+                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno','randomlist'));
             }
             else {
                 $ImgJugadores = [$ImagenJu1,$ImagenJu2];
                 $NameJugadores = [$NombreJu1,$NombreJu2];
                 $PuntajeJugadores = [$puntajeJugador1,$puntajeJugador2];
-                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno'));
+                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno','randomlist'));
             }
         }
         else{
             $ImgJugadores = [$ImagenJu1];
             $NameJugadores = [$NombreJu1];
             $PuntajeJugadores = [$puntajeJugador1];
-            return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno'));
+            return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno','randomlist'));
         }
 
     }
 
     public function preguntas(Request $request){
-//dd($request);
+        
+    $randomlist =  json_decode($request->list);
+  // $randomlist = implode(",", $randomlist);
+//dd($randomlist);
     if($request->turno+1 == $request->cantjug ){
         $turno=0;
     }
@@ -154,13 +160,24 @@ class JuegoController extends Controller
         $ImgJugadores = $request->imagen;
         $NameJugadores = $request->nombre;
 
-        $preguntas2=DB::table('preguntas')->where('tematica_id',$request->tematica)->join('tematicas','preguntas.tematica_id','tematicas.id')
-                        ->join('respuestas','respuestas.preguntas_id','preguntas.id')->select('preguntas.*','tematicas.nombre','respuestas.respuestacorrecta')->get();
-
-        $contadorP = DB::table('preguntas')->where('tematica_id',$request->tematica)->count();
-//dd($contadorP);
         
-        return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno'));
+        $preguntas2=DB::table('preguntas')->where('tematica_id',$request->tematica)->join('tematicas','preguntas.tematica_id','tematicas.id')
+                                        ->join('respuestas','respuestas.preguntas_id','preguntas.id')
+                                            ->whereNotIn('preguntas.id',$randomlist)->select('preguntas.*','tematicas.nombre','respuestas.respuestacorrecta')->get();
+
+        $contadorP = DB::table('preguntas')->where('tematica_id',$request->tematica)->whereNotIn('preguntas.id',$randomlist)->count();
+//dd($contadorP);
+        if($contadorP <= 1){
+            $randomlist = [0];
+            $preguntas2=DB::table('preguntas')->where('tematica_id',$request->tematica)->join('tematicas','preguntas.tematica_id','tematicas.id')
+                                        ->join('respuestas','respuestas.preguntas_id','preguntas.id')
+                                            ->whereNotIn('preguntas.id',$randomlist)->select('preguntas.*','tematicas.nombre','respuestas.respuestacorrecta')->get();
+
+        $contadorP = DB::table('preguntas')->where('tematica_id',$request->tematica)->whereNotIn('preguntas.id',$randomlist)->count();
+        }
+        //dd($contadorP);
+        return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno','randomlist'));
+        
         //print_r($pregunt->respuesta->respuestacorrecta);
         //$respuestasc = respuesta::all();
         //return view('JuegoView', compact('preguntas','respuestasc'));
@@ -203,11 +220,13 @@ class JuegoController extends Controller
         // return redirect()->route('Juego');
     }
     public function recuperarpartida(Request $request){
+        $randomlist = [];
         $tematicas= Tematicas::all();
         $partida=DB::table('partidas')->where('partidas.id',$request->id)->where('partidas.tematica_id',$request->tematica_id)->get();
 
-        $preguntas2=DB::table('preguntas')->where('tematica_id',$request->tematica_id)->join('tematicas','preguntas.tematica_id','tematicas.id')
-                        ->join('respuestas','respuestas.preguntas_id','preguntas.id')->select('preguntas.*','tematicas.nombre','respuestas.respuestacorrecta')->get();
+        $preguntas2=DB::table('preguntas')->where('tematica_id',$request->tematica)->join('tematicas','preguntas.tematica_id','tematicas.id')
+                        ->join('respuestas','respuestas.preguntas_id','preguntas.id')
+                        ->whereNotIn('preguntas.id',$randomlist)->select('preguntas.*','tematicas.nombre','respuestas.respuestacorrecta')->get();
         //dd($preguntas2);
 
         $contadorP = DB::table('preguntas')->where('tematica_id',$request->tematica_id)->count();
@@ -247,20 +266,20 @@ class JuegoController extends Controller
                 $ImgJugadores = [$ImagenJu1,$ImagenJu2,$ImagenJu3];
                 $NameJugadores = [$NombreJu1,$NombreJu2,$NombreJu3];
                 $PuntajeJugadores = [$puntajeJugador1,$puntajeJugador2,$puntajeJugador3];
-                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno'));
+                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno','randomlist'));
             }
             else {
                 $ImgJugadores = [$ImagenJu1,$ImagenJu2];
                 $NameJugadores = [$NombreJu1,$NombreJu2];
                 $PuntajeJugadores = [$puntajeJugador1,$puntajeJugador2];
-                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno'));
+                return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno','randomlist'));
             }
         }
         else{
             $ImgJugadores = [$ImagenJu1];
             $NameJugadores = [$NombreJu1];
             $PuntajeJugadores = [$puntajeJugador1];
-            return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno'));
+            return view('JuegoView', compact('NumJug','ImgJugadores', 'NameJugadores','PuntajeJugadores','preguntas2','contadorP','turno','randomlist'));
         }
 
     }
