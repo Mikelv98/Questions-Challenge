@@ -28,4 +28,13 @@
 
 <h4>At the end modify the file .env that is actually in your proyect in the conection of mysql, modify "DB_DATABASE" value that's actually laravel change this for "preguntados"</h4>
 
+```sql
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=preguntados
+DB_USERNAME=root
+DB_PASSWORD=""
+```
+
 🤝
