@@ -9,9 +9,21 @@
 
 <h4>1.- composer install</h4>
 
+```
+composer install
+```
+
 <h4>2.- copy .env.example .env</h4>
 
+```
+copy .env.example .env
+```
+
 <h4>3.- php artisan key:generate</h4>
+
+```
+php artisan key:generate
+```
 
 <h1>Database</h1>
 
@@ -20,9 +32,10 @@
 <h4>Firstable you need to create the DB in blank in your DBMS/SGBD </h4>
 
 <h4>Secondly run the comand: </h4>
-    <ul>
-        <li>php artisan migrate:fresh</li>
-    </ul>
+
+```
+php artisan migrate:fresh
+```
     
 <h4>Thirdly you need to import the DB that is actually in the proyect, the name of the DB is preguntados new.sql </h4>
 
