@@ -1,3 +1,8 @@
+## Programs that are required to run the proyect
+
+<a href="https://getcomposer.org/">Get composer</a><br>
+<a href="https://www.apachefriends.org/download.html">Download XAMPP</a>
+
 
 ## Commands to run the proyect
 
@@ -20,5 +25,7 @@
     </ul>
     
 <h4>Thirdly you need to import the DB that is actually in the proyect, the name of the DB is preguntados new.sql </h4>
+
+<h4>At the end modify the file .env that is actually in your proyect in the conection of mysql, modify "DB_DATABASE" value that's actually laravel change this for "preguntados"</h4>
 
 🤝
