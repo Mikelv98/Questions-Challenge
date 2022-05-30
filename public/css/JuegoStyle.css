@@ -45,6 +45,7 @@
                 }
                 
                 body#Juego form#Form h4 {
+                    font-size: larger;
                     border-radius: 8px;
                     border: 1px solid black;
                     min-height: 200px;
@@ -134,4 +135,8 @@
                     border: 1px solid black;
                     font-family: "Comic Neue", sans-serif;
                     text-align: center;
+                }
+
+                label[class="radio respuesta"]{
+                    font-size: 25px;
                 }

@@ -15,9 +15,33 @@
     {{-- <h1>Game</h1> --}}
     @php
         $random = rand(0, $contadorP - 1);
+        if($random<0){
+            $random = 0;
+        }
         //dd($contadorP);
-         array_push($randomlist, $preguntas2[$random]->id);
+        array_push($randomlist, $preguntas2[$random]->id);
         //  print_r($randomlist);
+
+
+
+
+    //    $random = rand(0, $contadorP);
+
+    //    if(in_array($random,$randomlist)){
+    //        while (in_array($random,$randomlist) == false) {
+    //            $random = rand(0, $contadorP);
+    //    }
+    //    }
+    //    //$random = rand(0, $contadorP);
+    //    if(count($randomlist) == $contadorP-1){
+    //        foreach ($randomlist as $i => $value) { 
+    //            unset($randomlist[$i]); 
+    //        }
+//
+     //   //print_r($randomlist);
+     //   }
+     //   array_push($randomlist, $preguntas2[$random]->id);
+     //   //dd($contadorP); 
     @endphp
 
     <form id="Form" action="{{ route('JuegoPregunta') }}" method="post">
